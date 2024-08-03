@@ -1,0 +1,51 @@
+// Start Navbar
+#nav.nav.p-relative
+  .container.p-relative.between-flex.f-wrap.pl-20.pr-20
+    .logo-container
+        a.logo.center-flex.fw-bold.fs-25(href='/') 
+            img(src='images/logo.png') 
+            p Parky
+    .links-container
+        ul.main-nav.d-flex.m-auto
+                if isUser
+                        li(class=pageTitle === 'Home' ? 'active' : '')
+                            a.active.center-flex.p-relative(style='--i:1;' href='/') Home 
+                        li(class=pageTitle === 'Garages' ? 'active' : '')
+                            a.center-flex.p-relative(style='--i:2;' href='/Garages') Garages
+                        li(class=pageTitle === 'Team Members' ? 'active' : '')
+                            a.center-flex.p-relative(style='--i:3;' href='/Team-Members') Team-Members
+                        li(class=pageTitle === 'Contact Us' ? 'active' : '')
+                            a.center-flex.p-relative(style='--i:4;' href='/Contact-Us') Contact-Us
+                        li(class=pageTitle === 'Your Profile' ? 'active' : '')
+                            a.center-flex.p-relative(style='--i:5;' href='/profile') Your-Profile
+                        li(class=pageTitle === 'Receive-Your-Car' ? 'active' : '')
+                            a.center-flex.p-relative(style='--i:6;' href='/Receive-Your-Car') Receive-Your-Car
+                        li(class=pageTitle === 'Subscription-plans' ? 'active' : '')
+                            a.center-flex.p-relative(style='--i:7;' href='/Subscription-plans') Subscription-plans
+                        li(class=pageTitle === 'Logout' ? 'active' : '')
+                            a#logoutButton.center-flex.p-relative(style='--i:8;') Logout
+                else
+                        li(class=pageTitle === 'Home' ? 'active' : '')
+                            a.active.center-flex.p-relative(style='--i:1;' href='/') Home 
+                        li(class=pageTitle === 'Garages' ? 'active' : '')
+                            a.center-flex.p-relative(style='--i:2;' href='/Garages') Garages
+                        li(class=pageTitle === 'Team Members' ? 'active' : '')
+                            a.center-flex.p-relative(style='--i:3;' href='/Team-Members') Team-Members
+                        li(class=pageTitle === 'Contact Us' ? 'active' : '')
+                            a.center-flex.p-relative(style='--i:4;' href='/Contact-Us') Contact-Us
+                        li(class=pageTitle === 'Login' ? 'active' : '')
+                            a.center-flex.p-relative(style='--i:5;' href='/login-signup?action=login') Login
+                        li(class=pageTitle === 'Signup' ? 'active' : '')
+                            a.center-flex.p-relative(style='--i:6;' href='/login-signup?action=signup') Signup 
+        button.toggle-menu.b-none
+                span
+                span
+                span
+    if isUser
+        .dark-mode.center-flex
+            span.material-icons-sharp.active.center-flex.h-full
+                i.fa-solid.fa-sun
+            span.material-icons-sharp.center-flex.h-full
+                i.fa-solid.fa-moon       
+
+// End Navbar

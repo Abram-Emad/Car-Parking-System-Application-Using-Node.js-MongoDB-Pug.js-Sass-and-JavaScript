@@ -1,0 +1,62 @@
+// Import Variables
+@use "../helpers/variables" as *;
+
+/* - Start Colors and Backgrounds - */
+.c {
+  &-black {
+    color: $color-black;
+  }
+
+  &-white {
+    color: $color-white;
+  }
+
+  &-grey {
+    color: $cloor-grey;
+  }
+
+  &-red {
+    color: $color-danger;
+  }
+
+  &-green {
+    color: $color-success;
+  }
+
+  & &-blue {
+    color: $color-primary;
+  }
+
+  &-orange {
+    color: $color-warning;
+  }
+}
+
+.bg {
+  &-red {
+    background-color: $color-danger;
+  }
+
+  &-green {
+    background-color: $color-success;
+  }
+
+  &-blue {
+    background-color: $color-primary;
+  }
+
+  &-orange {
+    background-color: $color-warning;
+  }
+
+  &-white {
+    background-color: $color-white;
+  }
+
+  &-eee {
+    background-color: #eee;
+  }
+
+}
+
+/* - End Colors and Backgrounds - */

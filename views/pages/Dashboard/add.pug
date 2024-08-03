@@ -1,0 +1,18 @@
+//- Start Page
+extends dashboard
+
+//- Change Page Content
+block pageContent
+  h1.headline.p-relative.mt-20.mr-20.mb-40.ml-40 New Garage
+  #container-forms.container-forms.p-relative.center-flex(style='width: 540px;min-height: 530px;float: left;')
+    .form-container.p-absolute.h-full.w-full
+      form.center-flex.h-full.w-full(action="/add" method="POST")
+        label(for="garageName") Garage Name
+        input.b-none.fs-13.w-full.rad-10(name="garageName" value="" placeholder="Garage Name", required)
+        label(for="garageAddress") Garage Address
+        input.b-none.fs-13.w-full.rad-10(name="garageAddress" value="" placeholder="Garage Address", required)
+        label(for="garageNumSlots") Number Of Slots
+        input.b-none.fs-13.w-full.rad-10(name="garageNumSlots" value="" placeholder="Number Of Slots", required)
+        label(for="garageDetails") Garage Details
+        textarea.form-control#garageDetails(name="garageDetails" cols="30" rows="12" placeholder="Garage Details")
+        button.fs-13.mt-10.rad-10(type="submit") Add Garage

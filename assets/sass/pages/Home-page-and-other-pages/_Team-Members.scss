@@ -1,0 +1,79 @@
+// Import Variables
+@use "../sass/helpers/variables" as *;
+
+/* -- Start Team Members -- */
+.main {
+    margin: 20px auto;
+    background-position: center;
+    background-size: cover;
+    height: max-content;
+    flex-wrap: wrap;
+
+    .profile-card {
+        flex-direction: column;
+        max-width: 400px;
+        border-radius: 25px;
+        transition: .4s ease;
+        animation: NavliaAni forwards 1s ease;
+        animation-delay: calc(.2s * var(--i));
+        margin: 20px;
+        box-shadow: $box-shadow;
+        background-color: $color-white;
+    }
+
+    .cover {
+        margin-bottom: 30px;
+        background: $color-primary;
+        border-radius: 25px 25px 0 0;
+
+    }
+
+    .image {
+        height: 150px;
+
+        .profile-pic {
+            object-fit: cover;
+            border-radius: 50%;
+            top: 50%;
+            width: 150px;
+        }
+    }
+
+    .data {
+        flex-direction: column;
+
+        h2 {
+            color: $color-primary;
+        }
+
+        span {
+            background: $color-primary;
+            color: $color-white;
+            padding: 8px 25px;
+            border-radius: 34px;
+        }
+    }
+
+    .row {
+        .info {
+            padding: 0 20px;
+        }
+    }
+
+    .buttons {
+        .btn {
+            color: $color-white;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 8px 25px;
+            border-radius: 15px;
+            white-space: nowrap;
+            background: $color-primary;
+            &:hover {
+                box-shadow: inset 0 5px 20px rgba(0, 0, 0, 0.4);
+            }
+        }
+    }
+}
+
+/* -- End Team Members -- */

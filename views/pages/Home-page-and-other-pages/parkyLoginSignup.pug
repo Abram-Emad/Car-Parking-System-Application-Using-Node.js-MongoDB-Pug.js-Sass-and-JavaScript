@@ -1,0 +1,94 @@
+//- Start Page
+extends homePage
+
+//- Change Page Content
+block pageContent
+    #container-forms.container-forms.p-relative.center-flex.login-signup
+        .form-container.p-absolute.h-full.form-1
+            form.center-flex.h-full.w-full(action='/parkySignup', method='POST', enctype='multipart/form-data')
+                h1 Create Account
+                h3 Input Your Personal Information
+                .s-container
+                    input.b-none.fs-13.w-full.rad-10(type='text', name='username', placeholder='Enter Your Username')
+                    if validationErrors.find(err => err.param === 'username')
+                        p.fs-14.p-10.bg-red.rad-10.c-white.txt-c= validationErrors.find(err => err.param === 'username').msg
+                    
+                    input.b-none.fs-13.w-full.rad-10(type='email', name='email', placeholder='Please Enter Your E-mail')
+                    if validationErrors.find(err => err.param === 'email')
+                        p.fs-14.p-10.bg-red.rad-10.c-white.txt-c= validationErrors.find(err => err.param === 'email').msg
+                    
+                    input.b-none.fs-13.w-full.rad-10(type='password', name='password', placeholder='Enter Your Password')
+                    if validationErrors.find(err => err.param === 'password')
+                        p.fs-14.p-10.bg-red.rad-10.c-white.txt-c= validationErrors.find(err => err.param === 'password').msg
+                    
+                    input.b-none.fs-13.w-full.rad-10(type='password', name='confirmPassword', placeholder='Please Confirm Your Password')
+                    if validationErrors.find(err => err.param === 'passwordConfirm')
+                        p.fs-14.p-10.bg-red.rad-10.c-white.txt-c= validationErrors.find(err => err.param === 'passwordConfirm').msg
+
+                <label for="profileImage">Choose a profile picture:</label>
+                input.b-none.fs-13.w-full.rad-10(type='file', name='profileImage', required)
+
+                <label for="coverImage">Choose a profile cover:</label>
+                input.b-none.fs-13.w-full.rad-10(type='file', name='coverImage', required)
+                
+                h3 Input Your Personal Payment Card Information
+                .s-container
+                    input.b-none.fs-13.w-full.rad-10(type='text', name='PaymentCardNumber', maxlength ='16', placeholder='Enter your payment card number')
+                    if validationErrors.find(err => err.param === 'PaymentCardNumber')
+                        p.fs-14.p-10.bg-red.rad-10.c-white.txt-c= validationErrors.find(err => err.param === 'PaymentCardNumber').msg
+
+                    input.b-none.fs-13.w-full.rad-10(type='number', name='PaymentCardExpDate', placeholder='Enter your payment card expire date')
+                    if validationErrors.find(err => err.param === 'PaymentCardExpDate')
+                        p.fs-14.p-10.bg-red.rad-10.c-white.txt-c= validationErrors.find(err => err.param === 'PaymentCardExpDate').msg
+
+                    input.b-none.fs-13.w-full.rad-10(type='text', name='PaymentCard3thNum', maxlength ='3', placeholder='Enter your payment card 3th number')
+                    if validationErrors.find(err => err.param === 'PaymentCard3thNum')
+                        p.fs-14.p-10.bg-red.rad-10.c-white.txt-c= validationErrors.find(err => err.param === 'PaymentCard3thNum').msg
+            
+                .s-container-checkbox
+                    input#myCheckbox(type='checkbox', name='licence')
+                    <label for="licence">I agree to the terms and conditions</label>                    
+                button#submitButton.fs-13.mt-10.rad-10(type='submit' disabled) Create Account
+                if authError
+                    p.fs-14.p-10.bg-red.rad-10.c-white.txt-c.p-relative.m-0= authError
+
+        .form-container.p-absolute.h-full.center-flex.form-2
+            form.center-flex.h-full.w-full(action='/parkyLogin', method='POST')
+                h1 Login
+                input.b-none.fs-13.w-full.rad-10(type='email', name='email', placeholder='Please Enter Your E-mail')
+                if validationErrors.find(err => err.param === 'email')
+                    p.fs-14.p-10.bg-red.rad-10.c-white.txt-c= validationErrors.find(err => err.param === 'email').msg
+                
+                input.b-none.fs-13.w-full.rad-10(type='password', name='password', placeholder='Password')
+                if validationErrors.find(err => err.param === 'password')
+                    p.fs-14.p-10.bg-red.rad-10.c-white.txt-c= validationErrors.find(err => err.param === 'password').msg
+                
+                button#loginButton.fs-13.mt-10.rad-10(type='submit') Login     
+                if authError
+                    br
+                    p.fs-14.p-10.bg-red.rad-10.c-white.txt-c.p-relative.m-0= authError           
+                br
+                div.txt-c
+                    | Don't have account ? 
+                    br
+                    a.fs-13(href='/login-signup?action=signup') Create Account
+                div.txt-c.m-5      
+                    | OR          
+                div.txt-c
+                    | Don't Confirm your account ? 
+                    br
+                    a.fs-13(href='/confirmEmail') Confirm Your Account
+                a.fs-13.forget(href='/forgetPassword-enterOTP?action=forget') Forget Your Password?
+
+        .toggle-container.p-absolute.h-full
+            .toggle.p-relative.h-full
+                .toggle-panel.p-absolute.h-full.txt-c.center-flex.toggle-left
+                    h1 Welcome Back!
+                    p Enter your personal details to use all of site features
+                    button.fs-13.mt-10.rad-10#form-2.hidden Login
+                .toggle-panel.p-absolute.h-full.txt-c.center-flex.toggle-right
+                    h1 Hello, Friend!
+                    p Register with your personal details to use all of site features
+                    button.fs-13.mt-10.rad-10#form-1.hidden SignUp
+
+//- End Page

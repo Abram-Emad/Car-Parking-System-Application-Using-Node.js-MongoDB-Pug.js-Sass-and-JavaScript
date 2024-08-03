@@ -1,0 +1,286 @@
+// Import Variables
+@use "../sass/helpers/variables" as *;
+
+/* -- Start Navbar -- */
+.nav {
+  background-color: $color-white;
+  -webkit-box-shadow: 0 0 10px #ddd;
+  -moz-box-shadow: 0 0 10px #ddd;
+  box-shadow: 0 0 10px #ddd;
+  margin: 20px;
+  border-radius: 18px;
+  z-index: 999999;
+
+  img {
+    height: 70px;
+    width: max-content;
+    margin-right: 5px;
+  }
+
+  .logo-container {
+    display: flex;
+  }
+
+  .dark-mode {
+    background-color: $color-light;
+    height: 28.8px;
+    width: 67.2px;
+    cursor: pointer;
+    border-radius: $border-radius-1;
+
+    span {
+      font-size: 19.2px;
+      width: 50%;
+
+      &.active {
+        background-color: $color-primary;
+        color: white;
+        border-radius: $border-radius-1;
+      }
+    }
+
+  }
+
+  .logo {
+    height: 72px;
+    font-family: 'FontAwesome';
+    letter-spacing: 2px;
+    font-size: 22px;
+    color: $color-primary;
+  }
+
+  .main-nav {
+    >li {
+      >a {
+        color: $color-black;
+        transition: $main-transition;
+        padding: 0 23px;
+        overflow: hidden;
+        height: 72px;
+        transition: .4s ease;
+        animation: NavliaAni forwards 1s ease;
+        animation-delay: calc(.2s * var(--i));
+        opacity: 0;
+
+        &.active {
+          color: $color-primary;
+        }
+
+        &::before {
+          content: "";
+          width: 100%;
+          left: -100%;
+          height: 4px;
+          background-color: $color-primary;
+          top: 0;
+          transition: $main-transition;
+          position: absolute;
+        }
+
+        &:hover {
+          &::before {
+            left: 0;
+          }
+
+          color: $color-primary;
+          background-color: #fafafa;
+        }
+      }
+    }
+
+    form {
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        width: 100%;
+        left: -100%;
+        height: 4px;
+        background-color: $color-primary !important;
+        top: 0;
+        transition: $main-transition;
+        position: absolute;
+      }
+
+      &:hover {
+        &::before {
+          left: 0;
+        }
+
+        color: $color-primary;
+        background-color: #fafafa;
+      }
+    }
+  }
+
+  .toggle-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    display: none;
+
+    &:focus {
+      outline: none;
+    }
+
+    span {
+      display: block;
+      background-color: $color-primary;
+      height: 4px;
+      margin-bottom: 4px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+  }
+
+  .toggle-menu.menu-active {
+    span {
+      background-color: $color-black;
+    }
+
+    &::before {
+      content: "";
+      border-width: 10px;
+      border-style: solid;
+      border-color: transparent transparent $color-white transparent;
+      position: absolute;
+      z-index: 99991;
+      bottom: -10px;
+    }
+  }
+}
+
+/* -- End Navbar -- */
+
+/* -- Start Home Section -- */
+.iconic-image {
+  display: flex;
+  position: relative;
+  margin-right: 30px;
+  align-items: flex-end;
+  margin-bottom: 15px;
+  transition: .4s ease;
+	animation: NavliaAni forwards 1s ease;
+	animation-delay: calc(.2s * var(--i));
+	opacity: 0;
+
+  img {
+    width: 370px;
+    display: flex;
+    height: auto;
+    position: absolute;
+    right: 0;
+    opacity: .8;
+
+  }
+}
+
+.home {
+  height: 90vh;
+
+  &-left {
+    max-width: 620px;
+
+    h1 {
+      font-size: 35px;
+      line-height: 1.2;
+      color: $color-black;
+      animation: H1Ani forwards 1s ease;
+      opacity: 0;
+      animation-delay: 1s;
+    }
+
+    h3 {
+      font-weight: 400;
+      color: $color-primary;
+      margin-top: 0.5rem;
+      animation: H1Ani forwards 1s ease;
+      opacity: 0;
+      animation-delay: 0.8s;
+    }
+
+    p {
+      margin: 15px 0 30px;
+      line-height: 150%;
+      animation: logoAni forwards 1s ease;
+      opacity: 0;
+      animation-delay: 0.6s;
+    }
+  }
+
+  &-container {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  &-right {
+    width: 450px;
+    height: 450px;
+    transform: rotate(45deg);
+    top: 2%;
+  }
+}
+
+.sq {
+  &-box {
+    height: 89%;
+    width: 89%;
+    border: 25px solid $color-primary;
+    background: $color-white;
+    box-shadow: -15px 15px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    animation: zoomOut 1s ease forwards;
+    animation-delay: 1.3s;
+
+    img {
+      transform: rotate(-45deg);
+      max-width: 580px;
+      top: -90px;
+      left: -124px;
+      opacity: 0;
+      animation-name: carAni, up-and-down;
+      animation-fill-mode: forwards;
+      animation-duration: 1s, 3s;
+      animation-timing-function: ease;
+      animation-delay: 1.6s, 0s;
+      animation-iteration-count: 1, infinite;
+    }
+
+  }
+
+  &-box2 {
+    width: 1000px;
+    height: 1000px;
+    background: $color-primary;
+    transform: rotate(45deg);
+    top: -52%;
+    left: 71%;
+    z-index: -1;
+    opacity: 0;
+    animation: sqbox2Ani forwards 1s ease;
+    animation-delay: 0.3s;
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: $color-primary;
+  border: 2px solid $color-primary;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: $color-background;
+  letter-spacing: 0.4px;
+  font-weight: 600;
+  transition: 0.4s ease;
+  opacity: 0;
+  animation: logoAni 1s ease forwards;
+  animation-delay: 1.3s;
+
+  &:hover {
+    background: transparent;
+    color: $color-primary;
+  }
+}
+
+/* -- End Home Section -- */

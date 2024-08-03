@@ -1,0 +1,78 @@
+// Import Variables
+@use "../sass/helpers/variables" as *;
+
+/* -- Start Subscription Plans -- */
+.plans-page {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  a {
+    cursor: pointer;
+  }
+  .plan {
+    border-radius: 25px;
+    transition: 0.4s ease;
+    animation: NavliaAni forwards 1s ease;
+    animation-delay: calc(0.2s * var(--i));
+    margin: 20px;
+    box-shadow: $box-shadow;
+    width: 300px;
+    .top {
+      border-radius: 25px;
+
+      border: 3px solid $color-white;
+      outline: 3px solid transparent;
+    }
+
+    &.green .top {
+      outline-color: $color-success;
+    }
+
+    &.blue .top {
+      outline-color: $color-alt-primary;
+    }
+
+    &.orange .top {
+      outline-color: $color-warning;
+    }
+
+    .price {
+      font-size: 40px;
+
+      span {
+        top: 0;
+        left: -20px;
+      }
+    }
+
+    ul li {
+      padding: 15px 0;
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      border-bottom: 1px solid #eee;
+
+      .yes {
+        color: $color-success;
+      }
+
+      i:not(.yes, .help) {
+        color: $color-danger;
+      }
+
+      i:first-child {
+        font-size: 18px;
+        margin-right: 5px;
+      }
+
+      .help {
+        color: $cloor-grey;
+        margin-left: auto;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+/* -- End Subscription Plans -- */

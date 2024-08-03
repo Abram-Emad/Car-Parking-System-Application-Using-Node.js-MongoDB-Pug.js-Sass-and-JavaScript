@@ -1,0 +1,70 @@
+// Import Variables
+@use "../sass/helpers/variables" as *;
+
+/* -- Start Error Page -- */
+#notfound {
+    height: 80vh;
+
+    .notfound {
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        max-width: 920px;
+        line-height: 1.4;
+
+        .notfound-404 {
+            top: 0;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+            z-index: -1;
+
+            img {
+                width: auto;
+                height: 500px;
+                left: 50%;
+                top: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        h2 {
+            font-size: 46px;
+            color: $color-black;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        p {
+            color: $color-black;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        a {
+            text-decoration: none;
+            text-transform: uppercase;
+            background: $color-primary;
+            display: inline-block;
+            padding: 16px 38px;
+            border: 2px solid transparent;
+            border-radius: 40px;
+            color: $color-white;
+            font-weight: 400;
+            -webkit-transition: .2s all;
+            transition: .2s all;
+
+            &:hover {
+                background-color: transparent;
+                border-color: $color-primary;
+                color: $color-primary;
+            }
+        }
+    }
+}
+/* -- End Error Page -- */

@@ -1,0 +1,32 @@
+/* - Start Box - */
+.d- {
+    &flex {
+        display: flex;
+    }
+
+    &grid {
+        display: grid;
+    }
+
+    &block {
+        display: block;
+    }
+}
+
+.f-wrap {
+    flex-wrap: wrap;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.gap-20 {
+    gap: 20px;
+}
+
+/* - End Box - */

@@ -1,0 +1,403 @@
+//- Start Page
+extends homePage
+
+block pageContent
+  .garage-main.center-flex
+    each garage in garages
+      .garage-card.d-flex.align-center
+        .cover.w-full.p-relative
+          p Number of slots #{garage.garageNumSlots}
+          .image.w-full.p-relative.center-flex
+            img.p-absolute.h-full(src='./images/garage.png' alt='' class="profile-pic")
+        .data.d-flex.align-center.mt-15
+          h2.fw-bold #{garage.garageName}
+          span.fs-15 #{garage.garageAddress}
+        .row.d-flex.align-center.mt-15
+          .info.txt-c
+            h3.m-0.fs-15 About
+            span #{garage.garageDetails}
+        .buttons.d-flex.align-center.mt-15.mb-15
+          a.fs-15.btn(class='view-garage', data-garage-id=garage._id)
+            i.fa-solid.fa-eye
+            | View Garage
+  .iconic-image(style="margin-right: 1px;")
+    img(src='./images/book-slot.png' alt='' class="profile-pic" style="width: 300px; z-index: 0;")
+  script.
+    const garages = !{JSON.stringify(garages)};
+    document.addEventListener('DOMContentLoaded', function() {
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showLocation, showError);
+        } else {
+          createPopupBox("Error", "Geolocation is not supported by this browser. 🌍");
+        }
+      }
+
+      function showLocation(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`)
+          .then(response => response.json())
+          .then(data => {
+            const address = data.address;
+            const country = address.country ? `${address.country} -` : '';
+            const city = address.city || address.town || address.village || '';
+            const street = address.road ? `${address.road} -` : '';
+            const locationText = `Your Location: ${country} ${city} ${street}`;
+            document.querySelector(".second-location").innerText = locationText;
+          })
+          .catch(error => {
+            console.error("Error fetching location data:", error);
+          });
+      }
+
+      function showError(error) {
+        let errorMessage;
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+            errorMessage = "Please enable location access so you can see your location and find the nearest garage.";
+            break;
+          case error.POSITION_UNAVAILABLE:
+            errorMessage = "Location information is unavailable.";
+            break;
+          case error.TIMEOUT:
+            errorMessage = "The request to get user location timed out.";
+            break;
+          case error.UNKNOWN_ERROR:
+            errorMessage = "An unknown error occurred.";
+            break;
+        }
+        createPopupBox("Error", errorMessage);
+      }
+
+      let timersData = JSON.parse(localStorage.getItem('timersData')) || {};
+      let slotColors = JSON.parse(localStorage.getItem('slotColors')) || {};
+
+      function updateTimer(slotId) {
+        const timerData = timersData[slotId];
+        if (!timerData) return;
+        const elapsedTime = Math.floor((Date.now() - timerData.startTime) / 1000);
+        let remainingTime = timerData.initialTime - elapsedTime;
+        if (remainingTime <= 0) {
+          remainingTime = 0;
+          resetTimer(slotId);
+          createPopupBox("Time's up!", "Your slot time is done. ⏰");
+        }
+        const minutes = Math.floor(remainingTime / 60);
+        const seconds = remainingTime % 60;
+        const timerElement = document.getElementById(`timer-${slotId}`);
+        if (timerElement) {
+          timerElement.innerText = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+      }
+
+      function startTimer(slotId, initialTime) {
+        if (isNaN(initialTime) || initialTime <= 0) {
+          createPopupBox('Invalid Time', 'Please enter a valid time! ⏰');
+          return;
+        }
+        resetTimer(slotId);
+        const startTime = Date.now();
+        timersData[slotId] = { initialTime, startTime };
+        updateTimer(slotId);
+        timersData[slotId].intervalId = setInterval(() => {
+          updateTimer(slotId);
+        }, 1000);
+        localStorage.setItem('timersData', JSON.stringify(timersData)); 
+
+        const slotElement = document.getElementById(slotId);
+        if (slotElement) {
+          slotElement.style.backgroundColor = 'red';
+          slotColors[slotId] = 'red';
+          localStorage.setItem('slotColors', JSON.stringify(slotColors));
+        }
+      }
+
+      function resetTimer(slotId) {
+        const timerData = timersData[slotId];
+        if (timerData && timerData.intervalId) {
+          clearInterval(timerData.intervalId);
+          delete timersData[slotId];
+          const timerElement = document.getElementById(`timer-${slotId}`);
+          if (timerElement) {
+            timerElement.innerText = '00:00';
+          }
+          const slotElement = document.getElementById(slotId);
+          if (slotElement) {
+            slotElement.style.backgroundColor = '';
+            delete slotColors[slotId];
+            localStorage.setItem('slotColors', JSON.stringify(slotColors));
+          }
+        }
+        localStorage.setItem('timersData', JSON.stringify(timersData)); 
+      }
+
+      window.addEventListener('load', function () {
+        Object.keys(timersData).forEach(slotId => {
+          const slotElement = document.getElementById(slotId);
+          if (slotElement) {
+            const timerElement = document.getElementById(`timer-${slotId}`);
+            if (!timerElement) {
+              const newTimerElement = document.createElement('div');
+              newTimerElement.id = `timer-${slotId}`;
+              newTimerElement.className = 'slot-timer';
+              newTimerElement.innerText = '00:00';
+              slotElement.appendChild(newTimerElement);
+            }
+            if (slotColors[slotId]) {
+              slotElement.style.backgroundColor = slotColors[slotId];
+            }
+          }
+        });
+
+        Object.keys(timersData).forEach(slotId => { 
+          const timerData = timersData[slotId];
+          if (!timerData) return;
+          const elapsedTime = Math.floor((Date.now() - timerData.startTime) / 1000);
+          const remainingTime = timerData.initialTime - elapsedTime;
+          if (remainingTime > 0) {
+            startTimer(slotId, remainingTime);
+          } else {
+            resetTimer(slotId);
+          }
+        });
+      });
+
+      window.addEventListener('beforeunload', function () {
+        const keys = Object.keys(timersData);
+        keys.forEach(slotId => {
+          const timerData = timersData[slotId];
+          if (timerData) {
+            timerData.elapsedTime = Math.floor((Date.now() - timerData.startTime) / 1000);
+            localStorage.setItem('timersData', JSON.stringify(timersData));
+          }
+        });
+      });
+
+      const viewButtons = document.querySelectorAll('.view-garage');
+      viewButtons.forEach(button => {
+        button.addEventListener('click', async function(event) {
+          event.preventDefault();
+          getLocation();
+
+          const garageId = this.getAttribute('data-garage-id');
+          const selectedGarage = garages.find(garage => garage._id === garageId);
+          const selectedGarageName = selectedGarage.garageName;
+          const selectedGarageAddress = selectedGarage.garageAddress;
+
+          const body = document.querySelector('body');
+          const subscriptionPlan = body.getAttribute('data-subscriptionplans');
+
+          let numOfSlots;
+          if (subscriptionPlan === 'planA') {
+            numOfSlots = Math.ceil(selectedGarage.garageNumSlots / 4);
+          } else if (subscriptionPlan === 'planB') {
+            numOfSlots = Math.ceil(selectedGarage.garageNumSlots / 2);
+          } else if (subscriptionPlan === 'planC') {
+            numOfSlots = selectedGarage.garageNumSlots;
+          }
+
+          const limitedSlots = selectedGarage.garageSlots.slice(0, numOfSlots);
+
+          function createGarageDetailsPopup(numOfSlots, slots) {
+            let overlay = document.createElement("div");
+            overlay.className = 'popup-overlay';
+            document.body.appendChild(overlay);
+            let popupBox = document.createElement("div");
+            popupBox.className = 'popup-box';
+            let container = document.createElement("div");
+            container.className = 'container';
+            let heading = document.createElement("div");
+            heading.className = "heading";
+            let firstHeading = document.createElement("h3");
+            firstHeading.className = "first-heading";
+            firstHeading.textContent = "Welcome to";
+            let secondHeading = document.createElement("h3");
+            secondHeading.className = "second-heading";
+            secondHeading.textContent = selectedGarageName;
+            heading.appendChild(firstHeading);
+            heading.appendChild(secondHeading);
+            let location = document.createElement("div");
+            location.className = "location";
+            let firstLocation = document.createElement("h3");
+            firstLocation.className = "first-location";
+            firstLocation.textContent = `Garage Location: ${selectedGarageAddress}`;
+            let secondLocation = document.createElement("h3");
+            secondLocation.className = "second-location";
+            location.appendChild(firstLocation);
+            location.appendChild(secondLocation);
+            let slotsContainer = document.createElement("div");
+            slotsContainer.className = 'slots-container';
+            let timerContainer = document.createElement("div");
+            timerContainer.id = "timer-container";
+            let inputContainer = document.createElement("div");
+            inputContainer.id = "input-container";
+            let label = document.createElement("label");
+            label.htmlFor = "countdown-time";
+            label.textContent = "Please enter the required booking period in seconds: ";
+            inputContainer.appendChild(label);
+            let input = document.createElement("input");
+            input.type = "number";
+            input.id = "countdown-time";
+            inputContainer.appendChild(input);
+            timerContainer.appendChild(inputContainer);
+
+            slots.forEach((slot) => {
+              let popup = document.createElement('div');
+              popup.className = 'slot';
+              popup.textContent = 'Slot ' + slot.slotNumber;
+              popup.id = slot._id;
+              let reserved = document.createElement('div');
+              reserved.className = 'reserved';
+              reserved.textContent = 'Is Reserved ' + (slot.isOccupied ? 'Yes' : 'No');
+              if (slot.isOccupied) {
+                popup.style.backgroundColor = 'gray';
+              }
+
+              let timerDisplay = document.createElement('div');
+              timerDisplay.id = `timer-${slot._id}`;
+              timerDisplay.className = 'slot-timer';
+              timerDisplay.innerText = '00:00';
+              slotsContainer.appendChild(popup);
+              slotsContainer.appendChild(reserved);
+              slotsContainer.appendChild(timerDisplay);
+
+              if (slot.isOccupied && timerDisplay.innerText === '00:00') {
+                timerDisplay.style.textDecoration = 'line-through';
+              }
+              
+              popup.onclick = async function () {
+                if (!slot.isOccupied) {
+                  let timeInSeconds = parseInt(document.getElementById('countdown-time').value);
+                  if (isNaN(timeInSeconds) || timeInSeconds <= 0) {
+                    createPopupBox('Invalid Time', 'Please enter a valid time! ⏰');
+                    return;
+                  }
+
+                  if (localStorage.getItem('loggedIn')) {
+                    const subscriptionPlan = body.getAttribute('data-subscriptionplans');
+                    if (subscriptionPlan !== 'undefined' && subscriptionPlan !== null && subscriptionPlan !== '') {
+                      try {
+                        const slotId = this.getAttribute('id');
+                        const slotName = this.textContent;
+
+                        await fetch('/Garages', {
+                          method: 'POST',
+                          headers: {
+                            'Content-Type': 'application/json',
+                          },
+                          body: JSON.stringify({ slotId, timeInSeconds, selectedGarageName, slotName }),
+                        });
+
+                        if (!slot.isOccupied) {
+                          localStorage.setItem('slotContent', slotName);
+                          startTimer(slot._id, timeInSeconds);
+                          popup.style.backgroundColor = 'red';
+                          localStorage.setItem('slotColor-' + slot._id, 'red');
+                          slot.isOccupied = true;
+                          reserved.textContent = 'Is Reserved Yes';
+
+                          // Show reservation success pop-up with button
+                          createPopupBox(
+                            "Reservation Successful",
+                            `Your reservation has been completed successfully.`
+                          );
+
+                          // Add button to the pop-up box
+                          const container = document.querySelector('.popup-box .container');
+                          let anchorButton = document.createElement("a");
+                          anchorButton.href = "http://192.168.0.10";
+                          anchorButton.className = "btn";
+                          anchorButton.style.marginTop = "10px";
+                          anchorButton.textContent = "Please come and deliver your car to us";
+                          container.appendChild(anchorButton);
+                        }
+                      } catch (error) {
+                        console.log("An error occurred:", error);
+                        document.querySelectorAll('.slot').forEach(slot => {
+                          slot.style.pointerEvents = 'auto';
+                        });
+                      }
+                    } else {
+                      createPopupBox("No Subscription", "You didn't subscribe yet. Please subscribe to a plan.");
+                    }
+                  } else {
+                    window.location.href = '/login-signup?action=login';
+                  }
+                } else {
+                  createPopupBox('Slot Reserved', 'This slot is already reserved. Please choose another one.');
+                }
+              };
+
+            });
+
+            container.appendChild(heading);
+            container.appendChild(timerContainer);
+            container.appendChild(location);
+            timerContainer.appendChild(slotsContainer);
+
+            popupBox.appendChild(container);
+            let closeButton = document.createElement("span");
+            closeButton.textContent = "X";
+            closeButton.className = 'close-button';
+            closeButton.addEventListener("click", function() {
+              popupBox.remove();
+              overlay.remove();
+            });
+            popupBox.appendChild(closeButton);
+            document.body.appendChild(popupBox);
+
+            Object.keys(timersData).forEach(slotId => { 
+              const timerData = timersData[slotId];
+              if (!timerData) return;
+              const elapsedTime = Math.floor((Date.now() - timerData.startTime) / 1000);
+              const remainingTime = timerData.initialTime - elapsedTime;
+              if (remainingTime > 0) {
+                startTimer(slotId, remainingTime);
+              } else {
+                resetTimer(slotId);
+              }
+            });
+          }
+
+          if (selectedGarage) {
+            createGarageDetailsPopup(numOfSlots, limitedSlots);
+          } else {
+            createPopupBox('Error', 'Garage details not found. 🚗');
+          }
+        });
+      });
+
+      function createPopupBox(title, message) {
+        let overlay = document.createElement("div");
+        overlay.className = 'popup-overlay';
+        overlay.style.zIndex = 9999999; // Higher z-index
+        document.body.appendChild(overlay);
+        let popupBox = document.createElement("div");
+        popupBox.className = 'popup-box';
+        popupBox.style.zIndex = 9999999; // Higher z-index
+        let container = document.createElement("div");
+        container.className = 'container';
+        let heading = document.createElement("div");
+        heading.className = "heading";
+        let titleElement = document.createElement("h3");
+        titleElement.className = "first-heading";
+        titleElement.textContent = title;
+        heading.appendChild(titleElement);
+        let messageElement = document.createElement("h3");
+        messageElement.className = "second-heading";
+        messageElement.textContent = message;
+        heading.appendChild(messageElement);
+        container.appendChild(heading);
+        popupBox.appendChild(container);
+        let closeButton = document.createElement("span");
+        closeButton.textContent = "X";
+        closeButton.className = 'close-button';
+        closeButton.addEventListener("click", function() {
+          popupBox.remove();
+          overlay.remove();
+        });
+        popupBox.appendChild(closeButton);
+        document.body.appendChild(popupBox);
+      }
+    });

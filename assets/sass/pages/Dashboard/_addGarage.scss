@@ -1,0 +1,51 @@
+// Import Variables
+@use "../sass/helpers/variables" as *;
+
+/* -- Start Add Garages Page -- */
+.details {
+    background-color: $color-white;
+    border-radius: 30px;
+    box-shadow: $box-shadow;
+    overflow: hidden;
+    transition: .4s ease;
+    animation: NavliaAni forwards 1s ease;
+    animation-delay: calc(.2s * var(--i));
+    opacity: 0;
+    width: 539px;
+    max-width: 100%;
+    padding: 25px;
+    margin-bottom: 15px;
+
+    h4 {
+        margin: 0;
+        color: $color-primary;
+        margin-bottom: 5px;
+    }
+
+    p {
+        margin: 0;
+        margin-bottom: 5px;
+    }
+}
+
+.edit {
+    .heading {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: -10px;
+
+        h1 {
+            margin: 0;
+            font-size: 25px;
+            margin-bottom: 5px;
+            color: $color-primary;
+        }
+
+        b {
+            font-size: 15px;
+        }
+
+    }
+}
+
+/* -- Start Add Garages Page -- */

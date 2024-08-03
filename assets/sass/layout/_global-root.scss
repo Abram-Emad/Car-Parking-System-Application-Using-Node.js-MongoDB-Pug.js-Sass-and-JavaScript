@@ -1,0 +1,165 @@
+// Import Variables
+@use "../sass/helpers/variables" as *;
+
+/* - Start Global Roots - */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    background: $color-background;
+}
+
+*:focus {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: $color-white;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $color-primary;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: $color-alt-primary;
+}
+
+.page {
+    background-color: #f1f5f9;
+    min-height: 100vh;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    cursor: pointer;
+
+    i {
+        margin-right: 5px;
+    }
+}
+
+.popup-box {
+    img {
+        height: 370px;
+        width: -webkit-fill-available;
+        border-radius: 25px;
+    }
+
+    button.btn {
+        border-radius: 13px;
+        font-size: 14px;
+        margin-bottom: 22px;
+        width: 184px;
+    }
+    .btn {
+        padding: 10px 10px;
+        font-size: 14px;
+        border-radius: 11px;
+    }
+}
+
+.go-to-top {
+    opacity: 0;
+    transition: .5s;
+    cursor: pointer;
+
+    i {
+        position: fixed;
+        color: $color-white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        z-index: 9999;
+        bottom: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        background-color: $color-primary;
+        border-radius: 20px;
+
+        &:hover {
+            background-color: $color-alt-primary;
+        }
+    }
+
+    &.show {
+        opacity: 1;
+    }
+
+}
+
+.main-title {
+    text-transform: capitalize;
+    margin: 0 auto 80px;
+    border: 2px solid black;
+    padding: 10px 30px;
+    font-size: 30px;
+    position: relative;
+    width: fit-content;
+    z-index: 1;
+    transform: $main-transition;
+
+    &:hover {
+        color: $color-white;
+        border: 2px solid $color-white;
+        transition-delay: 0.5s;
+
+        &::before {
+            z-index: -1;
+            animation: left-move .5s linear forwards;
+        }
+
+        &::after {
+            z-index: -1;
+            animation: right-move .5s linear forwards;
+        }
+    }
+
+    &::before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        background-color: $color-primary;
+        position: absolute;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -30px;
+    }
+
+    &::after {
+        content: "";
+        width: 12px;
+        height: 12px;
+        background-color: $color-primary;
+        position: absolute;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        right: -30px;
+    }
+}
+
+/* - End Global Roots - */

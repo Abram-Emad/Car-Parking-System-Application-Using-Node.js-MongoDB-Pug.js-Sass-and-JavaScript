@@ -1,0 +1,51 @@
+// Import Global Roots
+@use "../sass/layout/global-root" as *;
+
+// Import Dark Mode
+@use "../sass/layout/darkMode" as *;
+
+// Import Home Page Style
+@use "../sass/pages/Home-page-and-other-pages/homePage" as *;
+
+// Import Footer Style
+@use "../sass/pages/Home-page-and-other-pages/Footer" as *;
+
+// Import Forms Style
+@use "../sass/pages/Home-page-and-other-pages/forms" as *;
+
+// Import Error Page Style
+@use "../sass/pages/Home-page-and-other-pages/error404Page" as *;
+
+// Import Team Members Page Style
+@use "../sass/pages/Home-page-and-other-pages/Team-Members" as *;
+
+// Import Contact Us Page Style
+@use "../sass/pages/Home-page-and-other-pages/Contact-Us" as *;
+
+// Import Your Profile Page Style
+@use "../sass/pages/Home-page-and-other-pages/Your-Profile" as *;
+
+// Import Garages Page Style
+@use "../sass/pages/Home-page-and-other-pages/Garages" as *;
+
+// Import Subscription Plans Page Style
+@use "../sass/pages/Home-page-and-other-pages/Subscription-plans" as *;
+
+// Import Privacy Data Policy Page Style
+@use "../sass/pages/Home-page-and-other-pages/privacyDataPolicy" as *;
+
+// Import Dashboard Page Style
+@use "../sass/pages/Dashboard/dashboard" as *;
+
+// Import Tables Style
+@use "../sass/pages/Dashboard/tables" as *;
+
+// Import Add Garage Page Style
+@use "../sass/pages/Dashboard/addGarage" as *;
+
+// Import Responsive Design
+@use "../sass/layout/responsive-design" as *;
+
+// Import Animations
+@use "../sass/layout/animation" as *;
+

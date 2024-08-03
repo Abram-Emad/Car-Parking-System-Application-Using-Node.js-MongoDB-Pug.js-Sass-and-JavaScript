@@ -1,0 +1,27 @@
+// Import Mixins
+@use "../sass/mixins/mixin-for-breakpoints" as *;
+
+// Import Maps
+@use "../sass/maps/map-for-breakpoints" as *;
+
+/* - Start Responsive Design - */
+.block-mobile {
+  @include breakpoint(md, max) {
+
+    display: block;
+  }
+}
+
+.hide-mobile {
+  @include breakpoint(md, max) {
+    display: none;
+  }
+}
+
+.txt-c-mobile {
+  @include breakpoint(md, max) {
+    text-align: center;
+  }
+}
+
+/* - End Responsive Design - */

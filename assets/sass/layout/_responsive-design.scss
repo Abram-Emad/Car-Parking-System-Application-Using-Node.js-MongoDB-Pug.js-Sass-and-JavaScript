@@ -1,0 +1,1102 @@
+// Import Mixins
+@use "../mixins/mixin-for-breakpoints" as *;
+
+// Import Maps
+@use "../maps/map-for-breakpoints" as *;
+
+// Import Variables
+@use "../sass/helpers/variables" as *;
+
+/* -- Start Responsive Design -- */
+
+/* -- Start Home Section -- */
+.home {
+  @include breakpoint(md, max) {
+    &-left {
+      z-index: 5;
+
+      h1 {
+        font-size: 29px;
+        margin-top: 0;
+        margin-bottom: 3px;
+      }
+
+      h3 {
+        font-size: 22px;
+        margin-bottom: 3px;
+        margin-top: 3px;
+      }
+
+      p {
+        font-size: 16px;
+        margin-bottom: 3px;
+        margin-top: 3px;
+      }
+
+      .btn {
+        width: 220px;
+        font-size: 16px;
+        padding: 10px 13px;
+      }
+    }
+  }
+}
+
+.home {
+  @include breakpoint(mb-l, max) {
+    &-left {
+      z-index: 5;
+
+      h1 {
+        font-size: 25px;
+        margin-top: 0;
+        margin-bottom: 3px;
+      }
+
+      h3 {
+        font-size: 18px;
+        margin-bottom: 3px;
+        margin-top: 3px;
+      }
+
+      p {
+        font-size: 13px;
+        margin-bottom: 3px;
+        margin-top: 3px;
+      }
+
+      .btn {
+        width: 149px;
+        font-size: 10px;
+        padding: 7px 10px;
+      }
+    }
+  }
+}
+
+.nav {
+  @include breakpoint(mb-l, max) {
+    .logo {
+      height: 60px;
+      font-size: 18px;
+    }
+
+    img {
+      height: 55px;
+    }
+  }
+}
+
+.links-container {
+  @include breakpoint(md, max) {
+    .main-nav {
+      margin: auto;
+
+      & > li > a {
+        padding: 10px;
+        font-size: 14px;
+        height: 40px;
+      }
+    }
+
+    .home {
+      &-left {
+        h1 {
+          font-size: 25px;
+          margin-bottom: 1px;
+        }
+
+        h3 {
+          font-size: 18px;
+          margin-bottom: 1px;
+          margin-top: 1px;
+        }
+
+        p {
+          font-size: 13px;
+          margin-bottom: 2px;
+          margin-top: 1px;
+        }
+      }
+    }
+  }
+}
+
+.links-container {
+  @include breakpoint(lg, max) {
+    .toggle-menu {
+      display: block;
+    }
+
+    .main-nav {
+      display: none;
+
+      &.open {
+        display: block;
+        background-color: $color-white;
+        padding: 10px;
+        position: absolute;
+        left: 0;
+        box-shadow: 0px 2px 10px 3px #b1b1b14a;
+        top: 82px;
+        width: 100%;
+        text-align: left;
+        border-radius: 6px;
+        z-index: 9999;
+
+        li a {
+          font-weight: bold;
+          height: 50px;
+          justify-content: flex-start;
+        }
+      }
+    }
+  }
+}
+
+.iconic-image {
+  @include breakpoint(lg, max) {
+    display: none;
+  }
+}
+.nav .links-container {
+  @include breakpoint(lg, max) {
+    display: flex;
+    margin-left: auto;
+  }
+}
+/* -- End Home Section -- */
+
+/* -- Start Contact Us Page -- */
+
+.contactUs {
+  @include breakpoint(mb-l, max) {
+    .form {
+      width: 283px;
+
+      [type="submit"] {
+        padding: 10px;
+        font-size: 15px;
+      }
+    }
+
+    .content h2 {
+      font-size: 25px;
+    }
+  }
+}
+
+/* -- End Contact Us Page -- */
+
+/* -- Start Team Members Page -- */
+.main {
+  @include breakpoint(lg, max) {
+    .profile-card {
+      max-width: 335px;
+    }
+  }
+}
+
+.main {
+  @include breakpoint(md, max) {
+    .profile-card {
+      max-width: 300px;
+    }
+
+    .buttons .btn {
+      margin: 0 5px;
+    }
+  }
+}
+
+.main {
+  @include breakpoint(mb-l, max) {
+    margin: 0 auto;
+
+    .profile-card {
+      max-width: 285px;
+    }
+
+    .cover {
+      p {
+        font-size: 12px;
+      }
+
+      .image {
+        height: 120px;
+
+        .profile-pic {
+          width: 120px;
+        }
+      }
+    }
+
+    .data {
+      margin-top: 0;
+
+      h2 {
+        font-size: 15px;
+      }
+
+      span {
+        font-size: 10px;
+        padding: 8px 15px;
+      }
+    }
+
+    .row .info {
+      padding: 0 20px;
+
+      h3 {
+        font-size: 13px;
+      }
+
+      span {
+        font-size: 12px;
+      }
+    }
+
+    .buttons .btn {
+      font-size: 12px;
+
+      margin: 0 20px;
+      padding: 8px 14px;
+    }
+  }
+}
+
+/* -- End Team Members Page -- */
+
+/* -- Start Your Profile Page -- */
+
+.card-container {
+  @include breakpoint(lg, max) {
+    .card {
+      .card-text {
+        width: 690px;
+      }
+
+      .img-avatar img {
+        left: 188px;
+      }
+    }
+  }
+}
+
+.card-container {
+  @include breakpoint(md, max) {
+    .edit .heading h1 {
+      font-size: 18px;
+    }
+
+    .container-forms {
+      width: 100% !important;
+      min-height: 450px !important;
+      margin-top: 20px;
+
+      form {
+        padding: 0 10px !important;
+      }
+    }
+    .card {
+      .img-avatar img {
+        width: 65px;
+        height: 65px;
+        left: 132px;
+      }
+
+      .portada img {
+        width: 165px;
+      }
+
+      .card-text {
+        width: 390px;
+      }
+
+      .title-total {
+        padding: 1.5em 0 1.5em 0;
+      }
+
+      .title {
+        margin-top: -15px;
+        margin-right: 20px;
+        font-size: 11px;
+        padding: 5px 10px;
+      }
+
+      h2 {
+        margin-left: 34px;
+        padding: 5px 15px;
+
+        font-size: 14px;
+      }
+
+      .desc h3 {
+        margin-left: 1px;
+      }
+
+      .title-total a.btn {
+        margin: 0 5px;
+        border-radius: 25%;
+        padding: 10px;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+.card-container {
+  @include breakpoint(mb-s, max) {
+    .edit .heading h1 {
+      font-size: 18px;
+    }
+
+    .container-forms {
+      width: 100% !important;
+      min-height: 350px !important;
+      margin-top: 20px;
+
+      form {
+        padding: 0 10px !important;
+      }
+    }
+    .card {
+      .img-avatar img {
+        width: 65px;
+        height: 65px;
+        left: 87px;
+      }
+
+      .portada img {
+        width: 119px;
+      }
+
+      .card-text {
+        width: 290px;
+      }
+
+      .title-total {
+        padding: 1.5em 0 1.5em 0;
+      }
+
+      .title {
+        margin-top: -15px;
+        margin-right: 20px;
+        font-size: 11px;
+        padding: 5px 10px;
+      }
+
+      h2 {
+        margin-left: 34px;
+        padding: 5px 15px;
+
+        font-size: 14px;
+      }
+
+      .desc h3 {
+        margin-left: 1px;
+      }
+
+      .title-total a.btn {
+        margin: 0 5px;
+        border-radius: 25%;
+        padding: 10px;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+/* -- End Your Profile Page -- */
+
+/* -- Start Garages Page -- */
+.garage {
+  @include breakpoint(lg, max) {
+    &-main {
+      .garage-card {
+        max-width: 335px;
+      }
+
+      .data {
+        span {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+.garage {
+  @include breakpoint(md, max) {
+    &-main {
+      .garage-card {
+        max-width: 425px;
+      }
+    }
+  }
+}
+
+.garage {
+  @include breakpoint(mb-l, max) {
+    &-main {
+      margin: 0 auto;
+
+      .garage-card {
+        max-width: 285px;
+      }
+
+      .cover {
+        margin-bottom: 55px;
+
+        p {
+          font-size: 12px;
+        }
+
+        .image {
+          margin-bottom: -65px;
+          height: 140px;
+
+          .profile-pic {
+            top: 5%;
+            width: 140px;
+          }
+        }
+      }
+
+      .data {
+        margin-top: 0;
+
+        h2 {
+          font-size: 15px;
+        }
+
+        span {
+          font-size: 10px;
+          padding: 8px 15px;
+        }
+      }
+
+      .row .info {
+        padding: 0 20px;
+
+        h3 {
+          font-size: 13px;
+        }
+
+        span {
+          font-size: 12px;
+        }
+      }
+
+      .buttons .btn {
+        font-size: 12px;
+
+        margin: 0 20px;
+        padding: 8px 14px;
+      }
+    }
+  }
+}
+
+.popup {
+  @include breakpoint(md, max) {
+    &-box {
+      width: 390px;
+      padding: 11px;
+
+      .container {
+        .heading {
+          .first-heading {
+            margin: 0;
+            font-size: 16px;
+          }
+
+          .second-heading {
+            margin: 0;
+            font-size: 14px;
+          }
+        }
+
+        #timer-container label {
+          font-size: 14px;
+        }
+
+        .slots-container {
+          width: 100%;
+
+          .slot {
+            font-weight: 400;
+            font-size: 13px;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 10px;
+          }
+
+          .reserved {
+            margin-left: 0;
+            font-size: 11px;
+          }
+
+          .slot-timer {
+            font-size: 11px;
+            margin-left: 5px;
+            margin-right: 5px;
+          }
+        }
+
+        .location .first-location,
+        .location .second-location {
+          margin-top: 2px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+.popup {
+  @include breakpoint(mb-s, max) {
+    &-box {
+      width: 280px;
+      padding: 20px;
+
+      .container {
+        .heading {
+          .first-heading {
+            margin: 0;
+            font-size: 15px;
+          }
+
+          .second-heading {
+            margin: 0;
+            font-size: 13px;
+          }
+        }
+
+        #timer-container label {
+          font-size: 13px;
+        }
+
+        .slots-container {
+          width: 100%;
+
+          .slot {
+            font-weight: 400;
+            font-size: 13px;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 10px;
+          }
+
+          .reserved,
+          .slot-timer {
+            font-size: 13px;
+          }
+        }
+
+        .location .first-location,
+        .location .second-location {
+          margin-top: 2px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+/* -- End Garages Page -- */
+
+/* -- Start Forms -- */
+
+.container-forms {
+  @include breakpoint(lg, max) {
+    max-width: 94%;
+  }
+}
+
+.container-forms {
+  @include breakpoint(md, max) {
+    margin: 0px auto;
+    max-width: 85%;
+    min-height: 620px;
+
+    &.active .form-1 {
+      width: 95%;
+      display: contents;
+    }
+
+    &.active .form-2 {
+      width: 95%;
+      display: none;
+    }
+
+    .form-2 {
+      width: -webkit-fill-available;
+      left: auto;
+      height: auto;
+    }
+
+    .form-1 {
+      height: auto;
+    }
+
+    form {
+      width: auto;
+    }
+
+    .toggle-container {
+      display: none;
+    }
+  }
+}
+
+.container-forms {
+  @include breakpoint(mb-l, max) {
+    margin: 0px auto;
+    max-width: 85%;
+    min-height: 480px;
+
+    form {
+      width: auto;
+
+      h1 {
+        font-size: 17px;
+      }
+
+      h3 {
+        font-size: 11px;
+        margin-bottom: 3px;
+      }
+
+      input {
+        font-size: 12px;
+
+        padding: 5px 10px;
+      }
+
+      label {
+        font-size: 11px;
+      }
+
+      button {
+        padding: 6px 15px;
+        font-size: 12px;
+      }
+    }
+
+    .toggle-container {
+      display: none;
+    }
+  }
+}
+
+/* -- End Forms -- */
+
+/* -- Start Footer Section -- */
+
+.footer {
+  @include breakpoint(lg, max) {
+    .copyRights-container {
+      text-align: center;
+      flex-direction: column;
+    }
+  }
+}
+
+.footer {
+  @include breakpoint(mb-l, max) {
+    padding: 0;
+
+    .social-link li a {
+      height: 30px;
+      width: 30px;
+      font-size: 15px;
+      margin-top: 20px !important;
+      margin: 10px;
+
+      i {
+        font-size: 15px;
+      }
+    }
+
+    .container {
+      padding: 0;
+    }
+
+    .copyRights-container {
+      text-align: center;
+      flex-direction: column;
+
+      p {
+        font-size: 12px;
+        margin-right: 1px;
+      }
+
+      .Btn {
+        font-size: 12px;
+      }
+
+      a {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.footer {
+  @include breakpoint(mb-s, max) {
+    .copyRights-container {
+      p {
+        font-size: 7px;
+      }
+
+      .Btn {
+        font-size: 7px;
+      }
+
+      a {
+        font-size: 7px;
+      }
+    }
+  }
+}
+
+/* -- End Footer Section -- */
+
+/* -- Start Error Page -- */
+#notfound {
+  @include breakpoint(md, max) {
+    height: 60vh;
+    .notfound {
+      .notfound-404 {
+        img {
+          height: 375px;
+        }
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+      a {
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+        width: fit-content;
+        font-size: 12px;
+        padding: 10px 20px;
+      }
+    }
+  }
+}
+#notfound {
+  @include breakpoint(mb-l, max) {
+    height: 45vh;
+    .notfound {
+      .notfound-404 {
+        img {
+          height: 249px;
+        }
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+      a {
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+        width: fit-content;
+        font-size: 12px;
+        padding: 10px 20px;
+      }
+    }
+  }
+}
+#notfound {
+  @include breakpoint(mb-l, max) {
+    height: 45vh;
+    .notfound {
+      .notfound-404 {
+        img {
+          height: 249px;
+        }
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+      a {
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+        width: fit-content;
+        font-size: 12px;
+        padding: 10px 20px;
+      }
+    }
+  }
+}
+/* -- End Error Page -- */
+
+/* -- Start Tables style -- */
+.table-responsive {
+  @include breakpoint(md, max) {
+    table {
+      overflow-x: auto;
+      border-spacing: 0;
+      width: 95%;
+
+      td {
+        padding: 5px;
+        font-size: 10px;
+      }
+
+      .btn {
+        width: 25px;
+        height: 25px;
+        margin: 5px;
+        font-size: 7px;
+      }
+
+      thead {
+        th {
+          font-size: 10px;
+        }
+
+        tr {
+          height: 40px;
+        }
+      }
+
+      tbody {
+        tr {
+          height: auto;
+        }
+      }
+    }
+  }
+}
+
+/* -- End Tables style -- */
+
+/* -- Start The Style Of The Body Of The Main Page Of The Dashboard --*/
+
+.dashboard {
+  @include breakpoint(lg, max) {
+    .details {
+      width: 95%;
+    }
+
+    .container {
+      main {
+        .container-forms {
+          width: 100% !important;
+          min-height: 540px !important;
+
+          form {
+            padding: 0 10px !important;
+          }
+        }
+
+        .num-of-users {
+          grid-template-columns: repeat(1, 1fr);
+          gap: 5px;
+        }
+
+        .new-users .user-list {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+.dashboard {
+  @include breakpoint(md, max) {
+    .container {
+      aside {
+        background-color: $darkMode-white;
+
+        .sidebar {
+          background-color: $darkMode-white;
+        }
+      }
+    }
+
+    .right-section {
+      .nav {
+        background-color: $darkMode-white;
+      }
+    }
+  }
+}
+
+body.dark-mode-variables {
+  @include breakpoint(md, max) {
+    .dashboard {
+      .container {
+        aside {
+          background-color: $darkMode-white;
+
+          .sidebar {
+            background-color: $darkMode-white;
+          }
+        }
+      }
+
+      .right-section {
+        .nav {
+          background-color: $darkMode-white !important;
+        }
+      }
+    }
+  }
+}
+
+.dashboard {
+  @include breakpoint(md, max) {
+    .btn {
+      padding: 10px 15px;
+      font-size: 10px;
+    }
+
+    .details {
+      width: 95%;
+    }
+
+    h1 {
+      font-size: 18px !important;
+    }
+
+    h2 {
+      font-size: 17px;
+    }
+
+    .container {
+      grid-template-columns: 1fr;
+      padding: 10px;
+      width: 90%;
+      margin-top: 65px;
+
+      main {
+        .container-forms {
+          width: 100% !important;
+          min-height: 490px !important;
+          margin-top: 20px;
+
+          form {
+            padding: 0 10px !important;
+          }
+        }
+
+        .num-of-users {
+          grid-template-columns: repeat(1, 1fr);
+          gap: 5px;
+        }
+
+        .new-users .user-list {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+
+    aside {
+      position: fixed;
+      background-color: $color-white;
+      top: 0;
+      width: 215px;
+      z-index: 3;
+      box-shadow: 1rem 3rem 4rem $color-light;
+      height: 100vh;
+      display: none;
+      animation: showMenu 0.4s ease forwards;
+
+      .logo {
+        margin-left: 16px;
+
+        h2 {
+          display: inline;
+        }
+      }
+
+      .sidebar {
+        h3 {
+          display: inline;
+        }
+
+        a {
+          width: 100%;
+          height: 3.4rem;
+
+          &:last-child {
+            position: absolute;
+            bottom: 5rem;
+          }
+        }
+      }
+
+      .toggle .close {
+        display: inline-block;
+        cursor: pointer;
+      }
+    }
+
+    .right-section {
+      width: 90%;
+      top: 0;
+      position: absolute;
+
+      .user-profile {
+        display: none;
+      }
+
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        align-items: center;
+        background-color: $color-white;
+        padding: 0 16px;
+        height: 4.6rem;
+        width: 100%;
+        z-index: 2;
+        box-shadow: 0 1rem 1rem $color-light;
+        margin: 0;
+
+        button {
+          display: inline-block;
+          background-color: transparent;
+          cursor: pointer;
+          color: $color-dark;
+          position: absolute;
+          left: 10px;
+          border: none;
+          font-size: 25px;
+
+          span {
+            font-size: 32px;
+          }
+        }
+
+        .dark-mode {
+          width: 4.4rem;
+          position: absolute;
+          left: 11%;
+        }
+      }
+
+      .profile .info {
+        gap: 5px;
+        font-size: smaller;
+      }
+    }
+  }
+}
+
+/* -- End The Style Of The Body Of The Main Page Of The Dashboard -- */
+
+/* -- End Responsive Design -- */

@@ -1,0 +1,33 @@
+{
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.1",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongodb-session": "^2.2.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "express-session": "^1.18.0",
+    "express-validator": "^6.14.2",
+    "method-override": "^3.0.0",
+    "mongodb": "^4.8.1",
+    "mongoose": "^6.13.0",
+    "multer": "^1.4.5-lts.1",
+    "node-localstorage": "^3.0.5",
+    "nodemailer": "^6.9.8",
+    "onoff": "^6.0.3",
+    "path": "^0.12.7",
+    "pug": "^3.0.2",
+    "serve-favicon": "^2.5.0",
+    "socket.io": "^4.5.1"
+  },
+  "name": "chat-application-project",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

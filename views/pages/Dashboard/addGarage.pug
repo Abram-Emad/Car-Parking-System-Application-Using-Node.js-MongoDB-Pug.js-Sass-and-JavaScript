@@ -1,0 +1,140 @@
+//- Start Page
+extends dashboard
+
+//- Change Page Content
+block pageContent
+    h1.headline.p-relative.mt-20.mr-20.mb-40.ml-40 Garages
+    .table-responsive
+        table
+            thead
+                tr
+                    th(scope='col') Garage Name
+                    th(scope='col') Garage Address
+                    th(scope='col') Number Of Slots
+                    th(scope='col') Action
+            tbody
+                each garage in garages
+                    tr
+                        td= garage.garageName
+                        td= garage.garageAddress
+                        td= garage.garageNumSlots
+                        td
+                            a.btn(class='view-garage', data-garage-id=garage._id)
+                                i.fas.fa-eye
+                            a.btn(class='edit-garage', data-garage-id=garage._id)
+                                i.far.fa-pen-to-square
+                            form(position='relative', action=`/delete/${garage._id}`, method='POST')
+                                button.btn(type='submit')
+                                    i.fas.fa-trash-alt
+            a.add.btn(href='/add') Add New Garage
+
+    script.
+        const garages = !{JSON.stringify(garages)};
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const viewButtons = document.querySelectorAll('.view-garage');
+            let selectedGarage = null;
+
+            viewButtons.forEach(button => {
+                button.addEventListener('click', async function(event) {
+                    event.preventDefault();
+                    const garageId = this.getAttribute('data-garage-id');
+                    selectedGarage = garages.find(garage => garage._id.toString() === garageId.toString());
+
+                    if (selectedGarage) {
+                        const garageDetailsContainer = document.createElement('div');
+                        garageDetailsContainer.classList.add('garage-details');
+
+                        const createdAtDate = new Date(selectedGarage.createdAt).toLocaleString();
+                        const updatedAtDate = new Date(selectedGarage.updatedAt).toLocaleString();
+
+                        garageDetailsContainer.innerHTML = `
+                            <h1 class="headline p-relative mt-20 mr-20 mb-40 ml-40">${selectedGarage.garageName}</h1>
+                            <div class='details'>    
+                                <h4>Garage Address:</h4>
+                                ${selectedGarage.garageAddress}
+                                <h4>Number of Slots:</h4>
+                                <p>${selectedGarage.garageNumSlots}</p>
+                                <h4>Details:</h4>
+                                <p>${selectedGarage.garageDetails || 'No details available'}</p>
+                                <h4>Date Created:</h4>
+                                <p>${createdAtDate}</p>
+                                <h4>Last Updated:</h4>
+                                <p>${updatedAtDate}</p>
+                            </div>
+                        `;
+
+                        const existingGarageDetails = document.querySelector('.garage-details');
+                        if (existingGarageDetails) {
+                            existingGarageDetails.remove(); // Remove existing details if any
+                        }
+
+                        document.querySelector('.table-responsive').appendChild(garageDetailsContainer);
+                    } else {
+                        alert('Garage details not found.');
+                    }
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const viewButtons = document.querySelectorAll('.edit-garage');
+            let selectedGarage = null;
+
+            viewButtons.forEach(button => {
+                button.addEventListener('click', async function(event) {
+                    event.preventDefault();
+                    const garageId = this.getAttribute('data-garage-id');
+                    selectedGarage = garages.find(garage => garage._id.toString() === garageId.toString());
+
+                    if (selectedGarage) {
+                        const garageContainer = document.createElement('div');
+                        garageContainer.classList.add('garage-details');
+
+                        const createdAtDate = new Date(selectedGarage.createdAt).toLocaleString();
+                        const updatedAtDate = new Date(selectedGarage.updatedAt).toLocaleString();
+
+                        garageContainer.innerHTML = `
+                           <h1 class="headline p-relative mt-20 mr-20 mb-40 ml-40">Edit Garage</h1>
+                            <div class='edit'>
+                                <div class="heading">
+                                    <h1 class="h2">Editing: ${selectedGarage.garageName}</h1>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <b>Last Updated: ${updatedAtDate}</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="container-forms" class="container-forms p-relative center-flex" style="width: 540px; min-height: 530px; float: left;">
+                                    <div class="form-container p-absolute h-full w-full">
+                                        <form class="center-flex h-full w-full" action="/edit/${selectedGarage._id}?_method=PUT" method="POST">
+                                            <label for="firstName">Garage Name</label>
+                                            <input class="b-none fs-13 w-full rad-10" name="garageName" value="${selectedGarage.garageName}" placeholder="First Name" required>
+                                            <label for="lastName">Garage Address</label>
+                                            <input class="b-none fs-13 w-full rad-10" name="garageAddress" value="${selectedGarage.garageAddress}" placeholder="Last Name" required>
+                                            <label for="lastName">Number Of Slots</label>
+                                            <input class="b-none fs-13 w-full rad-10" name="garageNumSlots" value="${selectedGarage.garageNumSlots}" placeholder="Last Name" required>
+                                            <label for="details">Garage Details</label>
+                                            <textarea id="garageDetails" class="form-control" name="garageDetails" cols="30" rows="12" placeholder="Garage Details" maxlength='290'>${selectedGarage.garageDetails}</textarea>
+                                            <button class="fs-13 mt-10 rad-10" type="submit">Update Garage</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+
+                        const existingGarageDetails = document.querySelector('.garage-details');
+                        if (existingGarageDetails) {
+                            existingGarageDetails.remove(); // Remove existing details if any
+                        }
+
+                        document.querySelector('.table-responsive').appendChild(garageContainer);
+                    } else {
+                        alert('Garage details not found.');
+                    }
+                });
+            });
+        });

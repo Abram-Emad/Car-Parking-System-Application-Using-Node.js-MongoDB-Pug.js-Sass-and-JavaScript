@@ -1,0 +1,65 @@
+include /helpers/mixins.pug
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(http-equiv='X-UA-Compatible' content='IE=edge')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        title= pageTitle 
+        include /includes/links.pug
+    body(data-darkMode=`${darkMode}`, data-SubscriptionPlans=`${SubscriptionPlans}`)
+        .container.o-hidden
+            include /includes/navbar.pug
+            block pageContent
+                .home.w-full.d-flex.p-relative.align-center
+                    .home-container.d-grid.align-center.h-full.space-between
+                        .home-left.p-relative.pl-20
+                            h1 Welcome to our garage app service
+                            h3.fs-25 This application will help you reserve a parking space for your car in our garages
+                            p.fs-16
+                                | Our goal is to provide the best service to our customers,
+                                br
+                                | and their satisfaction and happiness are our priorities and what we strive for all the time.
+                            a.btn.rad-17.w-fit(href='/Garages') 
+                                i.fa-solid.fa-warehouse
+                                | Explore Our Garages
+                        .home-right.p-relative
+                            .sq-box.rad-50
+                                img.p-absolute(src='./images/home.png')
+                        .sq-box2.p-absolute.rad-50
+            include /includes/footer.pug
+            .go-to-top
+              i.fas.fa-arrow-up
+        script(src='js/main.js')
+        script.
+
+            window.addEventListener('load', function() {
+                                
+                let goToTop = document.querySelector(".go-to-top");
+
+                // Function to handle the scroll event
+                function handleScroll() {
+                if (window.scrollY >= 1000) {
+                    goToTop.classList.add("show");
+                } else {
+                    goToTop.classList.remove("show");
+                }
+                }
+                
+                if (typeof observeElement !== 'function') {
+                    document.body.innerHTML = '';
+                }
+
+                // Smooth scroll to top when the button is clicked
+                function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+                }
+
+                // Attach the scroll and click event handlers
+                window.addEventListener("scroll", handleScroll);
+                goToTop.addEventListener("click", scrollToTop);
+
+            });

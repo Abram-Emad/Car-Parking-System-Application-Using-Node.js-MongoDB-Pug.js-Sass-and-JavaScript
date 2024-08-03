@@ -1,0 +1,198 @@
+// Import Variables
+@use "../sass/helpers/variables" as *;
+
+/* -- Start Forms -- */
+.container-forms {
+	z-index: 1;
+	background-color: $color-white;
+	border-radius: 30px;
+	box-shadow: $box-shadow;
+	overflow: hidden;
+	flex-direction: column;
+	transition: .4s ease;
+	animation: NavliaAni forwards 1s ease;
+	animation-delay: calc(.2s * var(--i));
+	opacity: 0;
+	width: 880px;
+	margin: 30px auto;
+	max-width: 100%;
+	min-height: 615px;
+	.s-container{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		input {
+			width: 95%;
+		}			
+	}
+	.s-container-checkbox{
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-items: center;			
+	}
+	p {
+		line-height: 20px;
+		letter-spacing: 0.3px;
+		margin: 20px 0;
+	}
+
+	span {
+		font-size: 12px;
+	}
+
+	a {
+		color: $color-mist-black;
+		text-decoration: none;
+		margin: 15px 0 10px;
+	}
+
+	button {
+		background-color: $color-alt-primary;
+		color: $color-white;
+		padding: 10px 45px;
+		border: 1px solid transparent;
+		font-weight: 600;
+		letter-spacing: 0.5px;
+		text-transform: uppercase;
+		cursor: pointer;
+
+		&.hidden {
+			background-color: transparent;
+			border-color: $color-white;
+		}
+	}
+
+	form {
+		background-color: $color-white;
+		flex-direction: column;
+		padding: 0 40px;
+		h3 {
+			font-size: 16px;
+			margin-bottom: 10px;
+			border-bottom: 1px solid $color-mist-black;
+			color: $color-primary;
+		}
+		h1 {
+			font-size: 25px;
+			margin: 0;
+			margin-top: 10px;
+		}
+		label {
+			font-size: 13px;
+			font-weight: bold;
+		}
+		
+	}
+
+	input {
+		background-color: $color-background;
+		margin: 8px 0;
+		padding: 10px 15px;
+		outline: none;
+	}
+
+	textarea {
+		background-color: #f6f6f9;
+		margin: 8px 0;
+		padding: 10px 15px;
+		outline: none;
+		border: none;
+		width: 100%;
+		border-radius: 10px;
+	}	
+}
+
+.form {
+	&-container {
+		top: 0;
+		transition: all 0.6s ease-in-out;
+	}
+
+	&-2 {
+		left: 0;
+		width: 50%;
+		z-index: 2;
+	}
+
+	&-1 {
+		left: 0;
+		width: 50%;
+		opacity: 0;
+		z-index: 1;
+	}
+}
+
+.container-forms.active {
+	.form {
+		&-2 {
+			transform: translateX(100%);
+		}
+
+		&-1 {
+			transform: translateX(100%);
+			opacity: 1;
+			z-index: 5;
+			animation: move 0.6s;
+		}
+	}
+
+	.toggle {
+		transform: translateX(50%);
+
+		&-container {
+			transform: translateX(-100%);
+			border-radius: 0 150px 100px 0;
+		}
+
+		&-left {
+			transform: translateX(0);
+		}
+
+		&-right {
+			transform: translateX(200%);
+		}
+	}
+
+}
+
+.toggle {
+	background-color: $color-alt-primary;
+	background: linear-gradient(to right, #5c6bc0, #512da8);
+	color: $color-white;
+	left: -100%;
+	width: 200%;
+	transform: translateX(0);
+	transition: all 0.6s ease-in-out;
+
+	&-container {
+		top: 0;
+		left: 50%;
+		width: 50%;
+		overflow: hidden;
+		transition: all 0.6s ease-in-out;
+		border-radius: 150px 0 0 100px;
+		z-index: 1000;
+	}
+
+	&-panel {
+		width: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		padding: 0 30px;
+		top: 0;
+		transform: translateX(0);
+		transition: all 0.6s ease-in-out;
+	}
+
+	&-left {
+		transform: translateX(-200%);
+	}
+
+	&-right {
+		right: 0;
+		transform: translateX(0);
+	}
+}
+
+/* -- End Forms -- */

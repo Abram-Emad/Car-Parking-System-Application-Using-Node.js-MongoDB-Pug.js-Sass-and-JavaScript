@@ -1,0 +1,29 @@
+// Import Boxes Style
+@use "../sass/framework/boxes-style" as *;
+
+// Import Padding and Margin
+@use "../sass/framework/padding&margin" as *;
+
+// Import Colors and Backgrounds
+@use "../sass/framework/colors&backgrounds" as *;
+
+// Import Positions
+@use "../sass/framework/positions" as *;
+
+// Import Fonts Style
+@use "../sass/framework/fonts-style" as *;
+
+// Import Borders
+@use "../sass/framework/borders" as *;
+
+// Import Transitions
+@use "../sass/framework/fonts-style" as *;
+
+// Import Width and Height
+@use "../sass/framework/width&height" as *;
+
+// Import Components
+@use "../sass/framework/components" as *;
+
+// Import Responsive Design
+@use "../sass/framework/responsive-design" as *;

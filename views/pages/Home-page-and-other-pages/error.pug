@@ -1,0 +1,14 @@
+//- Start Page
+extends homePage
+
+//- Change Page Content
+block pageContent
+    #notfound.p-relative.m-auto
+        .notfound.p-absolute.txt-c.pl-10.pr-20.w-full
+            .notfound-404.p-absolute.h-full
+                img.p-absolute.m-0(src='images/404bg.png')
+            h2.m-0 We are sorry, Page not found!
+            p.fs-16.m-15
+            | The page you are looking for might have been removed had its name changed or is temporarily unavailable.
+            a.fs-14(href='/') Back To Homepage
+//- End Page

@@ -1,0 +1,11 @@
+/* - Start Transition - */
+.tr-3ms {
+    transition: .3s;
+  }
+
+.o {
+  &-0 {
+    opacity: 0;
+  }
+}
+  /* - End Transition - */

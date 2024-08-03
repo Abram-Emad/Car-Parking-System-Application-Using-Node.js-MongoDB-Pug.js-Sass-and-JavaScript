@@ -1,0 +1,20 @@
+.toggle.mt-25.center-flex
+    .logo.d-flex
+        img(src='images/logo.png')
+        h2 App
+            span.ml-5.primary.fs-13 Dashboard
+    #close-btn.close
+        i.fa-solid.fa-xmark
+.sidebar.p-relative.d-flex.rad-17
+    a.active.d-flex.align-center.p-relative(href='/dashboard')
+        i.fa-solid.fa-chart-bar
+        h3 Dashboard
+    a.d-flex.align-center.p-relative(href='/users')
+        i.fa-solid.fa-users
+        h3 Users
+    a.d-flex.align-center.p-relative(href='/addGarage')
+        i.fa-solid.fa-warehouse
+        h3 Garages
+    a.d-flex.align-center.p-relative#logoutButton
+        i.fa-solid.fa-arrow-right-from-bracket
+        h3 Logout

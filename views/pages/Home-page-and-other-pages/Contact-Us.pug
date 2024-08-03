@@ -1,0 +1,27 @@
+//- Start Page
+extends homePage
+
+//- Change Page Content
+block pageContent
+    .contactUs
+
+        .form.center-flex
+            .content.txt-c
+                h2 Contact Us
+                form(action='/Contact-Us', method='post')
+                    input.d-block.w-full.b-none.rad-10.input(type='text', placeholder='Your Name', name='name', maxlength='30')
+                    span.d-block.p-relative.rad-10.progress
+                    span.d-block.fs-13.p-5.count
+                    input.d-block.w-full.b-none.rad-10.input(type='email', placeholder='Your Email', name='email', maxlength='50')
+                    span.d-block.p-relative.rad-10.progress
+                    span.d-block.fs-13.p-5.count
+                    input.d-block.w-full.b-none.rad-10.input(type='text', placeholder='Your Phone', name='mobile', maxlength='11')
+                    span.d-block.p-relative.rad-10.progress
+                    span.d-block.fs-13.p-5.count
+                    textarea.d-block.w-full.b-none.rad-10.input(placeholder='Tell Us About Your Needs', name='message', maxlength='400')
+                    span.d-block.p-relative.rad-10.progress
+                    span.d-block.fs-13.p-5.count
+                    input.d-block.w-full.p-15.fw-bold.b-none.rad-10(type='submit' value='Send')
+        .iconic-image
+            img(src='./images/contact-us.png' alt='' class="profile-pic")
+//- End Page

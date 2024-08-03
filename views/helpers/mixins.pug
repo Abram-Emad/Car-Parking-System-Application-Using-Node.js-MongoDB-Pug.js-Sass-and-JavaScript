@@ -1,0 +1,31 @@
+//- Team Members Page
+mixin teamMembersPageContent(name, jobTitle, des, man1, man2, man3, woman1, woman2, woman3, soc1, soc2)
+    .profile-card.d-flex.align-center
+        .cover.w-full.p-relative
+            .image.w-full.p-relative.center-flex
+                if man1
+                    img.p-absolute.h-full(src='./images/man-icon-1.png' alt='' class="profile-pic")
+                if man2
+                    img.p-absolute.h-full(src='./images/man-icon-2.png' alt='' class="profile-pic")
+                if man3
+                    img.p-absolute.h-full(src='./images/man-icon-3.png' alt='' class="profile-pic")
+                if woman1 
+                    img.p-absolute.h-full(src='./images/woman-icon-1.png' alt='' class="profile-pic")
+                if woman2 
+                    img.p-absolute.h-full(src='./images/woman-icon-2.png' alt='' class="profile-pic")
+                if woman3
+                    img.p-absolute.h-full(src='./images/woman-icon-3.png' alt='' class="profile-pic")
+        .data.d-flex.align-center.mt-15
+            h2.fw-bold.mt-35 #{name}
+            span.fs-15 #{jobTitle}
+        .row.d-flex.align-center.mt-15
+            .info.txt-c
+                h3.m-0.fs-15 About #{name}
+                span #{des}
+        .buttons.d-flex.align-center.mt-15.mb-15
+            a.fs-15(href=soc1, class="btn") 
+                i.fa-regular.fa-envelope
+                | Message
+            a.fs-15(href=soc2, class="btn") 
+                i.fa-solid.fa-user-plus
+                | Follow  

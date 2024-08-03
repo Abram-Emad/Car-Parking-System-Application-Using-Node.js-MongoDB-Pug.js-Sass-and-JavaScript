@@ -1,0 +1,32 @@
+/* - Start Fonts Style - */
+.txt-c {
+  text-align: center;
+}
+
+.fs {
+  &-13 {
+    font-size: 13px;
+  }
+
+  &-14 {
+    font-size: 14px;
+  }
+
+  &-15 {
+    font-size: 15px;
+  }
+
+  &-16 {
+    font-size: 16px;
+  }
+
+  &-25 {
+    font-size: 25px;
+  }
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+/* - End Fonts Style - */

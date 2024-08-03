@@ -1,0 +1,529 @@
+// Import Variables
+@use "../sass/helpers/variables" as *;
+
+body.dark-mode-variables {
+    background: $darkMode-background;
+
+    h3,
+    h1,
+    td,
+    span,
+    div,
+    a {
+        color: $darkMode-dark-variant;
+    }
+
+    .iconic-image img {
+        opacity: 0.3;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: $darkMode-white;
+    }
+
+    /* -- Start Navbar -- */
+    .nav {
+        background-color: $darkMode-white;
+        box-shadow: 0 0 10px rgba(132, 139, 200, 0.18);
+
+        .links-container {
+            .main-nav {
+                &.open {
+                    background-color: $darkMode-white;
+                    box-shadow: $darkMode-box-shadow;
+                }
+            }
+        }
+
+        .toggle-menu.menu-active::before {
+            border-color: transparent transparent $darkMode-white transparent !important;
+        }
+
+        .dark-mode {
+            background-color: $color-light;
+            border-radius: $border-radius-1;
+
+            span {
+                &.active {
+                    color: white;
+                    border-radius: $border-radius-1;
+                }
+            }
+        }
+
+        .main-nav {
+            >li {
+                >a {
+                    color: $darkMode-dark;
+
+                    &:hover {
+                        background-color: $darkMode-background;
+                    }
+
+                    &.active {
+                        color: $color-primary;
+                    }
+                }
+            }
+
+            form {
+                &::before {
+                    content: "";
+
+                    background-color: $color-primary !important;
+                }
+
+                &:hover {
+                    &::before {
+                        left: 0;
+                    }
+
+                    background-color: #fafafa;
+                }
+            }
+        }
+
+        .toggle-menu.menu-active {
+            span {
+                background-color: $darkMode-dark;
+            }
+
+            &::before {
+                content: "";
+                border-color: transparent transparent $color-white transparent;
+            }
+        }
+    }
+
+    /* -- End Navbar -- */
+
+    /* -- Start Home Section -- */
+    .home {
+        &-left {
+            h1 {
+                color: $darkMode-dark;
+            }
+        }
+    }
+
+    .sq {
+        &-box {
+            border: 25px solid $color-primary;
+            background: $darkMode-white;
+            box-shadow: $darkMode-box-shadow;
+        }
+    }
+
+    .btn {
+        border: 2px solid $color-primary;
+        box-shadow: $darkMode-box-shadow;
+        color: $color-background;
+    }
+
+    /* -- End Home Section -- */
+
+    /* -- Start Your Profile -- */
+    .card {
+        background: $darkMode-white;
+        box-shadow: $darkMode-box-shadow;
+
+        h2 {
+            color: $color-white;
+        }
+
+        .title {
+            color: $color-white;
+        }
+
+        .desc {
+            h4 {
+                margin-bottom: -10px;
+            }
+        }
+
+        .img-avatar img {
+            border: 6px solid $darkMode-white;
+        }
+    }
+
+    /* -- End Your Profile -- */
+
+    /* -- Start Team Members -- */
+    .main {
+        .profile-card {
+            box-shadow: $darkMode-box-shadow;
+            background-color: $darkMode-white;
+        }
+
+        .data {
+            span {
+                color: $color-white;
+            }
+        }
+
+        .buttons {
+            .btn {
+                color: $color-white;
+
+                &:hover {
+                    box-shadow: inset 0 5px 20px rgba(0, 0, 0, 0.4);
+                }
+            }
+        }
+    }
+
+    /* -- End Team Members -- */
+
+    /* -- Start Team Members -- */
+    .garage-main {
+        .garage-card {
+            box-shadow: $darkMode-box-shadow;
+            background-color: $darkMode-white;
+        }
+
+        .cover {
+            p {
+                color: $color-white;
+            }
+        }
+
+        .data {
+            span {
+                color: $color-white;
+            }
+        }
+
+        .buttons {
+            .btn {
+                color: $color-white;
+
+                &:hover {
+                    box-shadow: inset 0 5px 20px rgba(0, 0, 0, 0.4);
+                }
+            }
+        }
+    }
+
+    .popup {
+        &-box {
+            background-color: $darkMode-white;
+            border: 1px solid $darkMode-light;
+        }
+
+        &-overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    }
+
+    .slot {
+        color: $color-white;
+    }
+
+    .close-button {
+        color: $color-white;
+    }
+
+    .reserved {
+        color: $darkMode-dark-variant;
+    }
+
+    #timer {
+        &-container {
+            label {
+                color: $darkMode-dark-variant;
+            }
+        }
+    }
+
+    /* -- End Team Members -- */
+
+    /* -- Start Subscription Plans --*/
+    .plans-page {
+        .plan {
+            box-shadow: $darkMode-box-shadow;
+
+            h2 {
+                color: $darkMode-background;
+            }
+
+            .price {
+                color: $darkMode-background;
+
+                span {
+                    color: $darkMode-background;
+                }
+            }
+
+            background-color: $darkMode-white;
+
+            .top {
+                border: 3px solid $darkMode-background;
+            }
+
+            ul {
+                li {
+                    border-color: $darkMode-background;
+                }
+            }
+        }
+    }
+
+    /* -- End Subscription Plans --*/
+
+    /* -- Start Forms -- */
+    .container-forms {
+        background-color: $darkMode-white;
+        box-shadow: $darkMode-box-shadow;
+
+        a {
+            color: $darkMode-dark-variant;
+        }
+
+        p {
+            color: $color-mist-black;
+        }
+
+        button {
+            background-color: $color-alt-primary;
+            color: $color-white;
+
+            &.hidden {
+                border-color: $color-white;
+            }
+        }
+
+        form {
+            background-color: $darkMode-white;
+
+            h3 {
+                border-bottom: 1px solid $color-mist-black;
+            }
+        }
+
+        input {
+            background-color: $darkMode-background;
+        }
+
+        textarea {
+            background-color: $darkMode-background;
+        }
+    }
+
+    .toggle {
+        background-color: $color-alt-primary;
+        background: linear-gradient(to right, #5c6bc0, #512da8);
+        color: $color-white;
+    }
+
+    /* -- End Forms -- */
+
+    /* -- Start Footer -- */
+    .footer {
+        background-color: $darkMode-white;
+
+        box-shadow: 0 0 10px rgba(132, 139, 200, 0.18);
+    }
+
+    /* -- End Footer -- */
+
+    /* -- Start Error Page -- */
+    #notfound {
+        .notfound {
+            h2 {
+                color: $darkMode-dark;
+            }
+
+            p {
+                color: $darkMode-dark;
+            }
+
+            a {
+                color: $color-white;
+            }
+        }
+    }
+
+    /* -- End Error Page -- */
+
+    /* -- Start Contact Us -- */
+    .contactUs {
+        .form {
+            background-color: $darkMode-white;
+            box-shadow: $darkMode-box-shadow;
+
+            .input {
+                border-bottom: 2px solid $darkMode-light;
+                background-color: $darkMode-background;
+            }
+
+            .input:focus {
+                border-bottom: 2px solid $darkMode-light;
+            }
+
+            [type="submit"] {
+                color: $color-white;
+                transition: $main-transition;
+            }
+
+            .progress {
+                transition: $main-transition;
+            }
+
+            .count {
+                color: $color-mist-black;
+            }
+
+            [type="submit"]:hover {
+                background-color: $color-alt-primary;
+            }
+        }
+    }
+
+    /* -- End Contact Us -- */
+
+    /* -- Start Tables style -- */
+    .table-responsive {
+        table {
+            background: $darkMode-white;
+
+            box-shadow: $darkMode-box-shadow;
+
+            .btn {
+                color: $color-white;
+            }
+
+            td {
+                border: 1px solid #c9d1d940;
+            }
+
+            thead {
+                th {
+                    color: $color-white;
+                    border: 1px solid #c9d1d940;
+                }
+            }
+
+            tbody tr {
+                border-bottom: 1px solid #e3f1d5;
+            }
+        }
+
+        .add {
+            color: $color-white;
+        }
+    }
+
+    /* -- End Tables style -- */
+
+    /* -- Start Add Garages Page -- */
+    .details {
+        background-color: $darkMode-white;
+        box-shadow: $darkMode-box-shadow;
+    }
+
+    /* -- Start Add Garages Page -- */
+
+    /* -- Start The Style Of The Body Of The Main Page Of The Dashboard --*/
+
+    color: $darkMode-white;
+    background-color: $darkMode-background;
+
+    a {
+        color: $darkMode-dark-variant;
+    }
+
+    h2 {
+        color: $darkMode-dark-variant;
+    }
+
+    p {
+        color: $color-dark-variant;
+    }
+
+    b {
+        color: $darkMode-dark-variant;
+    }
+
+    .text-muted {
+        color: $color-info-dark;
+    }
+
+    .container {
+        aside {
+            height: 100vh;
+
+            .sidebar {
+                background-color: $darkMode-white;
+                box-shadow: $darkMode-box-shadow;
+
+                a {
+                    color: $color-info-dark;
+
+                    &.active {
+                        background-color: $color-light;
+
+                        &::before {
+                            content: "";
+                        }
+                    }
+                }
+            }
+        }
+
+        main {
+            .headline::before {
+                background-color: $darkMode-white;
+            }
+
+            .num-of-users {
+                &>div {
+                    background-color: $darkMode-white;
+                    border-radius: $card-border-radius;
+                    box-shadow: $darkMode-box-shadow;
+                }
+
+                .num-of-reserved-slots svg circle {
+                    stroke: $color-danger;
+                }
+
+                .num-of-available-slots svg circle {
+                    stroke: $color-primary;
+                }
+            }
+
+            .new-users {
+                .user-list {
+                    background-color: $darkMode-white;
+                    border-radius: $card-border-radius;
+                    box-shadow: $darkMode-box-shadow;
+                }
+            }
+        }
+    }
+
+    .right-section {
+        .nav {
+            box-shadow: $darkMode-box-shadow;
+        }
+
+        .dark-mode {
+            background-color: $color-light;
+            border-radius: $border-radius-1;
+
+            span {
+                &.active {
+                    color: white;
+                    border-radius: $border-radius-1;
+                }
+            }
+        }
+
+        .user-profile {
+            background-color: $darkMode-white;
+            border-radius: $card-border-radius;
+            box-shadow: $darkMode-box-shadow;
+        }
+    }
+}
+
+/* -- End The Style Of The Body Of The Main Page Of The Dashboard -- */

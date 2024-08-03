@@ -1,0 +1,358 @@
+// Import Variables
+@use "../sass/helpers/variables" as *;
+
+/* -- Start The Style Of The Body Of The Main Page Of The Dashboard --*/
+.dashboard {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  color: $color-dark;
+  background-color: $color-background;
+
+  a {
+    color: $color-dark;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  h1 {
+    font-weight: bold;
+    font-size: 25px;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 22.4px;
+    margin: 0;
+    color: $color-dark;
+  }
+
+  h3 {
+    font-weight: 500;
+    font-size: 13.92px;
+  }
+
+  small {
+    font-size: 12.16px;
+  }
+
+  p {
+    color: $color-dark-variant;
+  }
+
+  b {
+    color: $color-dark;
+  }
+
+  .text-muted {
+    color: $color-info-dark;
+  }
+
+  .primary {
+    color: $color-primary;
+  }
+
+  .danger {
+    color: $color-danger;
+  }
+
+  .success {
+    color: $color-success;
+  }
+
+  .warning {
+    color: $color-warning;
+  }
+
+  .container {
+    width: 96%;
+    margin: 0 auto;
+    gap: 28.8px;
+    grid-template-columns: 12rem auto 23rem;
+
+    aside {
+      height: 100vh;
+
+      .toggle {
+        background: transparent;
+        width: auto;
+
+        .logo {
+          gap: 8px;
+
+          img {
+            height: 35px;
+          }
+        }
+
+        .close {
+          color: $color-dark;
+          display: none;
+          font-weight: normal;
+          font-style: normal;
+          font-size: 24px;
+          line-height: 1;
+          letter-spacing: normal;
+          text-transform: none;
+          white-space: nowrap;
+          word-wrap: normal;
+          direction: ltr;
+          -webkit-font-smoothing: antialiased;
+        }
+      }
+
+      .sidebar {
+        flex-direction: column;
+        background-color: $color-white;
+        box-shadow: $box-shadow;
+        height: 85vh;
+        top: 21.6px;
+        transition: all 0.3s ease;
+        transition: 0.4s ease;
+        animation: NavliaAni forwards 1s ease;
+        animation-delay: calc(0.2s * var(--i));
+        opacity: 0;
+
+        &:hover {
+          box-shadow: none;
+        }
+
+        a {
+          color: $color-info-dark;
+          height: 59.2px;
+          gap: 13.6px;
+          margin-left: 32px;
+          transition: all 0.3s ease;
+          left: 0;
+
+          &:hover {
+            color: $color-primary;
+            left: 9.6px;
+          }
+
+          &:last-child {
+            position: absolute;
+            bottom: 32px;
+            width: 100%;
+          }
+
+          &.active {
+            width: 100%;
+            color: $color-primary;
+            background-color: $color-light;
+            margin-left: 0;
+            border-radius: 17px;
+
+            &:hover {
+              left: 0;
+            }
+
+            &::before {
+              content: "";
+              width: 6px;
+              border-radius: 10px;
+              height: 18px;
+              background-color: $color-primary;
+            }
+          }
+        }
+      }
+    }
+
+    main {
+      .headline {
+        transition: 0.4s ease;
+        opacity: 0;
+        animation: logoAni 1s ease forwards;
+        animation-delay: 1.3s;
+      }
+
+      .headline::before,
+      .headline::after {
+        content: "";
+        height: 3px;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+      }
+
+      .headline::before {
+        background-color: $color-white;
+        width: 120px;
+      }
+
+      .headline::after {
+        background-color: $color-primary;
+        width: 40px;
+      }
+
+      .num-of-users {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25.6px;
+        transition: 0.4s ease;
+        animation: NavliaAni forwards 1s ease;
+        animation-delay: calc(0.2s * var(--i));
+        opacity: 0;
+
+        & > div {
+          background-color: $color-white;
+          padding: 19.2px;
+          border-radius: $card-border-radius;
+          margin-top: 14.4px;
+          box-shadow: $box-shadow;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            box-shadow: none;
+          }
+        }
+
+        .progresss {
+          width: 92px;
+          height: 92px;
+        }
+
+        svg {
+          width: 112px;
+          height: 112px;
+
+          circle {
+            fill: none;
+            stroke-width: 10;
+            stroke-linecap: round;
+            transform: translate(5px, 5px);
+          }
+        }
+
+        .sales svg circle {
+          stroke: $color-success;
+          stroke-dashoffset: -30;
+          stroke-dasharray: 200;
+        }
+
+        .num-of-reserved-slots svg circle {
+          stroke: $color-danger;
+          stroke-dashoffset: -30;
+          stroke-dasharray: 200;
+        }
+
+        .num-of-available-slots svg circle {
+          stroke: $color-primary;
+          stroke-dashoffset: -30;
+          stroke-dasharray: 200;
+        }
+
+        .progresss .percentage {
+          top: -3px;
+          left: -1px;
+        }
+      }
+
+      .new-users {
+        transition: 0.4s ease;
+        animation: NavliaAni forwards 1s ease;
+        animation-delay: calc(0.2s * var(--i));
+        opacity: 0;
+
+        .user-list {
+          background-color: $color-white;
+          border-radius: $card-border-radius;
+          box-shadow: $box-shadow;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            box-shadow: none;
+          }
+
+          .user {
+            flex-direction: column;
+
+            img {
+              width: 80px;
+              height: 80px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .right-section {
+    transition: 0.4s ease;
+    animation: NavliaAni forwards 1s ease;
+    animation-delay: calc(0.2s * var(--i));
+    opacity: 0;
+
+    .nav {
+      justify-content: end;
+      gap: 32px;
+      background: transparent;
+      box-shadow: 0 0 10px #ddd0;
+
+      button {
+        display: none;
+      }
+
+      .profile {
+        gap: 10px;
+        text-align: right;
+
+        .profile-photo {
+          width: 44.8px;
+          height: 44.8px;
+          overflow: hidden;
+        }
+      }
+    }
+
+    .dark-mode {
+      background-color: $color-light;
+      height: 28.8px;
+      width: 67.2px;
+      cursor: pointer;
+      border-radius: $border-radius-1;
+
+      span {
+        font-size: 19.2px;
+        width: 50%;
+
+        &.active {
+          background-color: $color-primary;
+          color: white;
+          border-radius: $border-radius-1;
+        }
+      }
+    }
+
+    .info {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+
+    .user-profile {
+      background-color: $color-white;
+      border-radius: $card-border-radius;
+      box-shadow: $box-shadow;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: none;
+      }
+
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+}
+
+/* -- End The Style Of The Body Of The Main Page Of The Dashboard -- */

@@ -1,0 +1,116 @@
+include /helpers/mixins.pug
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title= pageTitle 
+    include /includes/links.pug
+  body.dashboard.fs-14(data-darkMode=`${darkMode}`)
+    .container.d-grid
+      // Sidebar Section
+      aside
+        include /includes/sidebar.pug
+      // Main Content
+      main.mt-25
+        block pageContent
+          h1.headline.p-relative.mt-20.mr-20.mb-40.ml-40 Dashboard
+          // Analyses
+          .num-of-users.d-grid
+            .sales
+              .status.between-flex
+                .info
+                  h3.fs-16.txt-c.ml-10 Number Of Users
+                .progresss.p-relative.rad-half
+                  svg
+                    circle(cx='38' cy='38' r='36')
+                  .percentage.p-absolute.w-full.h-full.center-flex
+                    p #{totalUsers}
+            .num-of-reserved-slots
+              .status.between-flex
+                .info
+                  h3.fs-16.txt-c.ml-10 Number Of Reserved Slots
+                .progresss.p-relative.rad-half
+                  svg
+                    circle(cx='38' cy='38' r='36')
+                  .percentage.p-absolute.w-full.h-full.center-flex
+                    p #{ReservedSlots}
+            .num-of-available-slots
+              .status.between-flex
+                .info
+                  h3.fs-16.txt-c.ml-10 Number Of Available Slots
+                .progresss.p-relative.rad-half
+                  svg
+                    circle(cx='38' cy='38' r='36')
+                  .percentage.p-absolute.w-full.h-full.center-flex
+                    p #{AvailableSlots}
+          // Users Section
+          .new-users.mt-20
+            h1.headline.p-relative.mt-20.mr-20.mb-40.ml-40 New Users
+            .user-list.p-20.mt-15.d-flex.space-between.f-wrap.gap-20
+              each user in users 
+                .user.center-flex
+                  img.mb-10.rad-half(src=`/${user.profileImage}`)
+                  h2 #{user.username}
+                  p #{user.email}
+      // Right Section
+      .right-section.mt-25
+        .nav.d-flex
+          button#menu-btn
+            i.fa-solid.fa-bars
+          .dark-mode.center-flex
+            span.material-icons-sharp.active.center-flex.h-full
+              i.fa-solid.fa-sun
+            span.material-icons-sharp.center-flex.h-full
+              i.fa-solid.fa-moon
+          .profile.d-flex
+            .info
+              p
+                | Hey, 
+                b #{admin.username} 
+              small.text-muted.ml-10 #{admin.role} 
+            .profile-photo.rad-half
+              img(src=`/${admin.profileImage}`)
+        .user-profile.center-flex.fs-16.p-20
+          .logo.center-flex.f-wrap 
+            img.rad-half.mb-15(src=`/${admin.profileImage}`)
+            h2.mb-10 #{admin.username} 
+            p #{admin.email} 
+    include /includes/footer.pug
+        .go-to-top
+          i.fas.fa-arrow-up
+    script(src='js/main.js')
+    script.
+
+        window.addEventListener('load', function() {
+                            
+            let goToTop = document.querySelector(".go-to-top");
+
+            // Function to handle the scroll event
+            function handleScroll() {
+            if (window.scrollY >= 1000) {
+                goToTop.classList.add("show");
+            } else {
+                goToTop.classList.remove("show");
+            }
+            }
+            
+            if (typeof observeElement !== 'function') {
+                document.body.innerHTML = '';
+            }
+
+            // Smooth scroll to top when the button is clicked
+            function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+            }
+
+            // Attach the scroll and click event handlers
+            window.addEventListener("scroll", handleScroll);
+            goToTop.addEventListener("click", scrollToTop);
+
+        });
+

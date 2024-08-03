@@ -1,0 +1,93 @@
+// Import Variables
+@use "../sass/helpers/variables" as *;
+
+/* -- Start Tables style -- */
+.table-responsive {
+    table {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border-spacing: 1;
+        border-collapse: collapse;
+        background: $color-white;
+        border-radius: 15px;
+        overflow: hidden;
+        max-width: 800px;
+        box-shadow: $box-shadow;
+        width: 100%;
+        position: relative;
+        transition: .4s ease;
+        animation: NavliaAni forwards 1s ease;
+        animation-delay: calc(.2s * var(--i));
+        opacity: 0;
+
+        .btn {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px;
+            font-size: 12px;
+            color: $color-white;
+
+            i {
+                margin: 0;
+            }
+
+            &:hover {
+                color: $color-primary;
+            }
+        }
+
+        td,
+        th {
+            padding-left: 8px
+        }
+
+        td {
+            border: 1px solid #c9d1d940;
+        }
+
+        thead {
+            tr {
+                height: 60px;
+                background: $color-primary;
+                font-size: 16px;
+            }
+
+            th {
+                color: $color-white;
+                border: 1px solid #c9d1d940;
+                font-size: 15px;
+
+            }
+        }
+
+        tbody tr {
+            height: 48px;
+            border-bottom: 1px solid #E3F1D5;
+
+            &:last-child {
+                border: 0;
+            }
+        }
+
+        td,
+        th {
+            text-align: center;
+        }
+    }
+
+    .add {
+        color: $color-white;
+        border-radius: 15px;
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+}
+
+/* -- End Tables style -- */

@@ -1,0 +1,162 @@
+//- Start Page
+extends homePage
+
+//- Change Page Content
+block pageContent
+    .plans-page.m-20
+      .plan.bg-white.p-20.m-20.green
+        .top.txt-c.p-20.bg-green
+          h2.m-0.c-white Basic
+          .price.c-white.p-relative.m-auto.w-fit
+            span.p-absolute.fs-25 $
+            | 9.99
+        ul
+          li
+            i.fa-solid.fa-xmark.fa-fw
+            span Access to all garage capacity
+            i.fa-solid.fa-circle-info.help
+          li
+            i.fa-solid.fa-check.fa-fw.yes
+            span Access to a quarter of the garages capacity
+            i.fa-solid.fa-circle-info.help
+        a.plan-a.btn-shape.c-white.d-block.w-fit.bg-green Subscribe
+      .plan.bg-white.p-20.m-20.blue
+        .top.txt-c.p-20.bg-blue
+          h2.m-0.c-white Premium
+          .price.c-white.p-relative.m-auto.w-fit
+            span.p-absolute.fs-25 $
+            | 14.99
+        ul
+          li
+            i.fa-solid.fa-xmark.fa-fw
+            span Access to all garage capacity
+            i.fa-solid.fa-circle-info.help
+          li
+            i.fa-solid.fa-check.fa-fw.yes
+            span Access to half the garages capacity
+            i.fa-solid.fa-circle-info.help
+        a.plan-b.btn-shape.c-white.d-block.w-fit.bg-blue Subscribe
+      .plan.bg-white.p-20.m-20.orange
+        .top.txt-c.p-20.bg-orange
+          h2.m-0.c-white Ultra
+          .price.c-white.p-relative.m-auto.w-fit
+            span.p-absolute.fs-25 $
+            | 19.99
+        ul
+          li
+            i.fa-solid.fa-check.fa-fw.yes
+            span Access to all garage capacity
+            i.fa-solid.fa-circle-info.help
+          li
+            i.fa-solid.fa-check.fa-fw.yes
+            span Enjoy all our services
+            i.fa-solid.fa-circle-info.help
+        a.plan-c.btn-shape.c-white.d-block.w-fit.bg-orange Subscribe
+    .iconic-image(style="margin-right: 1px;")
+      img(src='./images/Payment1.png', alt='', class="profile-pic", style="width: 225px; z-index: 0;")
+    script.
+      document.addEventListener('DOMContentLoaded', () => {
+          const body = document.querySelector('body');
+          const subscriptionPlans = body.getAttribute('data-subscriptionplans');
+
+          if (subscriptionPlans.includes('planA')) {
+              const planA = document.querySelector('.plan-a');
+              planA.style.backgroundColor = 'grey';
+              planA.innerText = 'Unsubscribe';
+          }
+
+          if (subscriptionPlans.includes('planB')) {
+              const planB = document.querySelector('.plan-b');
+              planB.style.backgroundColor = 'grey';
+              planB.innerText = 'Unsubscribe';
+          }
+
+          if (subscriptionPlans.includes('planC')) {
+              const planC = document.querySelector('.plan-c');
+              planC.style.backgroundColor = 'grey';
+              planC.innerText = 'Unsubscribe';
+          }
+
+          const plans = document.querySelectorAll('.plan-a, .plan-b, .plan-c');
+
+          plans.forEach(plan => {
+              plan.addEventListener('click', async (event) => {
+                  event.preventDefault();
+                  const currentPlan = event.target;
+                  const otherPlans = [...plans].filter(p => p !== currentPlan);
+                  const subscribedPlan = otherPlans.find(p => p.innerText === 'Unsubscribe');
+
+                  if (currentPlan.innerText === 'Subscribe') {
+                      if (subscribedPlan) {
+                          createPopupBox('Subscription Error', 'You should cancel your subscription from the current plan to subscribe to the new plan.');
+                      } else {
+                          currentPlan.innerText = 'Unsubscribe';
+                          currentPlan.style.backgroundColor = 'grey';
+                          try {
+                              const response = await fetch(`/${currentPlan.classList[0]}`, {
+                                  method: 'POST',
+                                  headers: {
+                                      'Content-Type': 'application/json',
+                                  },
+                              });
+
+                              if (!response.ok) {
+                                  throw new Error(`HTTP error! status: ${response.status}`);
+                              }
+                          } catch (error) {
+                              console.error(error);
+                          }
+                      }
+                  } else if (currentPlan.innerText === 'Unsubscribe') {
+                          currentPlan.innerText = 'Subscribe';
+                          currentPlan.style.backgroundColor = '';
+                          try {                              
+                          const response = await fetch('/resetPlan', {
+                              method: 'POST',
+                              headers: {
+                                  'Content-Type': 'application/json',
+                              },
+                          });
+
+                              if (!response.ok) {
+                                  throw new Error(`HTTP error! status: ${response.status}`);
+                              }
+                          } catch (error) {
+                              console.error(error);
+                          }
+                  }
+              });
+          });
+
+          function createPopupBox(title, message) {
+              let overlay = document.createElement("div");
+              overlay.className = 'popup-overlay';
+              document.body.appendChild(overlay);
+              let popupBox = document.createElement("div");
+              popupBox.className = 'popup-box';
+              let container = document.createElement("div");
+              container.className = 'container';
+              let heading = document.createElement("div");
+              heading.className = "heading";
+              let titleElement = document.createElement("h3");
+              titleElement.className = "first-heading";
+              titleElement.textContent = title;
+              heading.appendChild(titleElement);
+              let messageElement = document.createElement("h3");
+              messageElement.className = "second-heading";
+              messageElement.textContent = message;
+              heading.appendChild(messageElement);
+              container.appendChild(heading);
+              popupBox.appendChild(container);
+              let closeButton = document.createElement("span");
+              closeButton.textContent = "X";
+              closeButton.className = 'close-button';
+              closeButton.addEventListener("click", function() {
+                  popupBox.remove();
+                  overlay.remove();
+              });
+              popupBox.appendChild(closeButton);
+              document.body.appendChild(popupBox);
+          }
+      });
+//- End Page

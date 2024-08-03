@@ -1,0 +1,126 @@
+// Import Variables
+@use "../sass/helpers/variables" as *;
+
+/* -- Start Contact Us -- */
+.contactUs {
+        display: grid;
+        grid-template-columns: 1fr auto;
+    
+    .form {
+        background-color: $color-white;
+        border-radius: 30px;
+        box-shadow: $box-shadow;
+        flex-direction: column;
+        transition: 0.4s ease;
+        animation: NavliaAni forwards 1s ease;
+        animation-delay: calc(0.2s * var(--i));
+        opacity: 0;
+        width: 415px;
+        margin: 30px auto;
+        padding-bottom: 40px;
+        max-width: 100%;
+        min-height: 310px;
+
+        .input {
+            border-bottom: 2px solid #ccc;
+            background-color: $color-background;
+            caret-color: $color-primary;
+            padding: 10px 15px;
+            outline: none;
+        }
+
+        textarea.input {
+            resize: none;
+            height: 200px;
+        }
+
+        .input:focus {
+            outline: none;
+            border-bottom: 2px solid #ccc;
+        }
+
+        [type="submit"] {
+            background-color: $color-primary;
+            color: $color-white;
+            font-size: 20px;
+            cursor: pointer;
+            width: 50%;
+            margin: auto;
+            transition: $main-transition;
+        }
+
+        .progress {
+            background-color: $color-primary;
+            width: 0;
+            height: 2px;
+            top: -2px;
+            transition: $main-transition;
+        }
+
+        .count {
+            text-align: right;
+            color: $color-mist-black;
+        }
+
+        .count.zero {
+            color: $color-primary;
+        }
+
+        [type="submit"]:hover {
+            background-color: $color-alt-primary;
+        }
+
+        textarea {
+            &:focus {
+                &::-webkit-input-placeholder {
+                    opacity: 0;
+                    transition: $main-transition;
+                }
+
+                &:-ms-input-placeholder {
+                    opacity: 0;
+                    transition: $main-transition;
+                }
+
+                &::placeholder {
+                    opacity: 0;
+                    transition: $main-transition;
+                }
+            }
+        }
+
+        input {
+            &:not([type="submit"]) {
+                &:focus {
+                    &:-webkit-input-placeholder {
+                        opacity: 0;
+                        transition: $main-transition;
+                    }
+
+                    &::-ms-input-placeholder {
+                        opacity: 0;
+                        transition: $main-transition;
+                    }
+
+                    &::placeholder {
+                        opacity: 0;
+                        transition: $main-transition;
+                    }
+                }
+            }
+        }
+    }
+
+    .content {
+        text-align: center;
+        padding: 0 20px;
+        width: 85%;
+    }
+
+    .content h2 {
+        font-size: 40px;
+        letter-spacing: -2px;
+    }
+
+}
+/* -- End Contact Us -- */

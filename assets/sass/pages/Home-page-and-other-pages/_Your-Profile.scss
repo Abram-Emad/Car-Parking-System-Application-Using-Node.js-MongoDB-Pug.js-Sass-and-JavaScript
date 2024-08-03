@@ -1,0 +1,92 @@
+// Import Variables
+@use "../sass/helpers/variables" as *;
+
+/* -- Start Your Profile -- */
+.card {
+    z-index: 1;
+    background: $color-white;
+    box-shadow: $box-shadow;
+    max-width: 800px;
+    align-items: center;
+    border-radius: 25px;
+
+    &-container {
+        justify-content: center;
+        transition: all 0.3s ease;
+        transition: .4s ease;
+        animation: NavliaAni forwards 1s ease;
+        animation-delay: calc(.2s * var(--i));
+        opacity: 0;
+    }
+
+    h2 {
+        padding: 5px 25px;
+        color: $color-white;
+        background-color: $color-primary;
+        float: left;
+        font-size: 20px;
+    }
+
+    .title {
+        padding: 8px 25px;
+        width: max-content;
+        text-align: left;
+        color: $color-white;
+        background-color: $color-primary;
+        float: right;
+    }
+
+    .desc {
+        padding: 0.5rem 1rem;
+
+        p {
+            color: $color-primary;
+        }
+
+        h4 {
+            margin-bottom: -10px;
+        }
+    }
+
+    &-text {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .img-avatar img {
+        width: 80px;
+        height: 80px;
+        border: 6px solid $color-white;
+        background-color: $color-primary;
+        top: 15px;
+        left: 225px;
+        cursor: pointer;
+    }
+
+    .title-total {
+        padding: 2.5em 1.5em 1.5em 1.5em;
+        height: 435px;
+        a.btn {
+            margin: 0 5px;
+            border-radius: 25%;
+            width: 35px !important;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            i {
+                margin: 0;
+            }
+        }        
+    }
+
+    .portada img {
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        background-position: bottom center;
+        background-size: cover;
+        cursor: pointer;
+    }
+
+}
+
+/* -- End Your Profile -- */

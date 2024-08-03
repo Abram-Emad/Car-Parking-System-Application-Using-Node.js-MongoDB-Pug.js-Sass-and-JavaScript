@@ -1,0 +1,106 @@
+// Import Variables
+@use "../sass/helpers/variables" as *;
+
+/* -- Start Footer -- */
+.footer {
+    background-color: $color-white;
+    -webkit-box-shadow: 0 0 10px #ddd;
+    -moz-box-shadow: 0 0 10px #ddd;
+    box-shadow: 0 0 10px #ddd;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 18px;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .copyRights-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+
+        .box-1,
+        .box-2 {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .Btn {
+            padding: 0px;
+            padding-right: 20px;
+            font-size: 12px;
+            border: 2px solid $color-primary;
+            color: $color-primary;
+
+
+            i {
+                height: 5px;
+                width: 5px;
+                border: none;
+            }
+        }
+
+        i {
+            height: 25px;
+            width: 25px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px;
+            border-radius: 8px;
+            border: 2px solid $color-primary;
+            font-size: 13px;
+            color: $color-primary;
+            padding: 6px;
+            margin-right: 5px;
+
+
+        }
+    }
+
+    .designer {
+        color: $color-primary;
+    }
+
+
+    .social-link li a {
+        height: 40px;
+        width: 40px;
+
+        font-size: 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 15px;
+        margin-bottom: 25px;
+        border-radius: 8px;
+        border: 2px solid $color-primary;
+        transform: rotate(45deg);
+        transition: .4s ease;
+        animation: socialAni forwards 1s ease;
+        animation-delay: calc(.2s * var(--i));
+        opacity: 0;
+    }
+
+    .social-link li a:hover {
+        border-color: $color-primary;
+    }
+
+    .social-link li a i {
+        transform: rotate(-45deg);
+        font-size: 20px;
+        color: $color-primary;
+    }
+
+}
+
+/* -- End Footer -- */

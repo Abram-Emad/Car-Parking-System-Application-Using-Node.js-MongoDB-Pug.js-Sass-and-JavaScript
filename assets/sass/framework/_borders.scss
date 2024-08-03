@@ -1,0 +1,41 @@
+/* - Start Border - */
+.rad {
+    &-6 {
+        border-radius: 6px;
+    }
+
+    &-10 {
+        border-radius: 10px;
+    }
+    &-17 {
+        border-radius: 17px;
+    }
+
+    &-50 {
+        border-radius: 50px;
+    }
+
+    &-half {
+        border-radius: 50%;
+    }
+}
+
+.b-none {
+    border: none;
+}
+
+.border {
+    &-ccc {
+        border: 1px solid #ccc;
+    }
+
+    &-eee {
+        border: 1px solid #eee;
+    }
+
+    &-ddd {
+        border: 1px solid #ddd;
+    }
+}
+
+/* - End Border - */

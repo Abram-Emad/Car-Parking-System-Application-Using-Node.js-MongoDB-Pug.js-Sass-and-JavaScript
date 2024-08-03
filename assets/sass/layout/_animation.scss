@@ -1,0 +1,123 @@
+// Import Mixins
+@use "../mixins/mixin-for-animations" as *;
+
+// Import Variables
+@use "../helpers/variables" as *;
+
+/* - Start Animation - */
+@include mixinAnimation(change-color) {
+  from {
+    background-color: $color-primary;
+  }
+
+  to {
+    background-color: white;
+  }
+}
+
+@include mixinAnimation(go-up) {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@include mixinAnimation(logoAni) {
+	0% {
+		transform: translateX(-100px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@include mixinAnimation(NavliaAni) {
+	0% {
+		transform: translateY(100px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@include mixinAnimation(socialAni) {
+	0% {
+		transform: translateX(100px) rotate(45deg);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0) rotate(45deg);
+		opacity: 1;
+	}
+}
+
+@include mixinAnimation(H1Ani) {
+	0% {
+		transform: translateY(-100px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@include mixinAnimation(zoomOut) {
+	0% {
+		transform: scale(1.1);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@include mixinAnimation(carAni) {
+	0% {
+		transform: translate(180px, -300px) scale(0) rotate(-45deg);
+		opacity: 0;
+	}
+	100% {
+		transform: translate(0, 0) scale(1) rotate(-45deg);
+		opacity: 1;
+	}
+}
+
+@include mixinAnimation(sqbox2Ani) {
+	0% {
+		right: -40%;
+		opacity: 0;
+	}
+	100% {
+		right: -26%;
+		opacity: 1;
+	}
+}
+
+@include mixinAnimation(move) {
+	0%,49.99% {
+		opacity: 0;
+		z-index: 1;
+	}
+	50%,100% {
+		opacity: 1;
+		z-index: 5;
+	}
+}
+
+@include mixinAnimation(showMenu) {
+	to {
+	  left: 0;
+	}
+}
+
+/* - End Animation - */

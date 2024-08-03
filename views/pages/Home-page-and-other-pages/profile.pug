@@ -1,0 +1,109 @@
+//- Start Page
+extends homePage
+
+//- Change Page Content
+block pageContent
+    .card-container.d-grid
+        .card.p-relative.d-flex
+            .img-avatar
+                img.p-absolute.rad-half(src= `/${userImage}`,alt='profileImage')
+            .card-text.d-grid
+                .portada
+                    img.w-full.h-full(src= `/${userCover}`,alt='coverImage')
+                .title-total
+                    .title.fw-bold.rad-17 #{role}
+                    h2.m-0.ml-20.fw-bold.rad-17.fs-16 #{userName}
+                    br
+                    .desc.fs-13
+                        h3 User Details
+                        h4.mt-0 Email
+                        p #{userEmail}
+                        h4.mt-0 Payment Card Number
+                        p #{userPaymentCardNumber}
+                        h4.mt-0 Payment Card Expire Date
+                        p #{userPaymentCardExpDate}
+                        h4.mt-0 Payment Card 3rd Number
+                        p #{userPaymentCard3thNum}
+                        if userGarageName && userGarageName.length > 0
+                            h4.mt-0 The name of the garage in which the reservation was made
+                            p #{userGarageName}
+                        if userNumOfSlotReserved && userNumOfSlotReserved > 0
+                            h4.mt-0 Number Of Slot Reserved
+                            p #{userNumOfSlotReserved}
+                        a.btn.edit-user(data-user-id=`${myId}`)
+                            i.far.fa-edit
+                        a.btn#delete-user(href='/deleteAccount')
+                            i.fas.fa-trash-alt
+                        a.btn#change-password(href='/changePassword')
+                            i.fa-solid.fa-key
+    .iconic-image(style="margin-right: 1px;")
+        img(src='./images/profile.png', alt='', class="profile-pic", style="z-index: 0;width: 340px;")
+
+    script.
+        const users = !{JSON.stringify(users)};
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const body = document.querySelector('body');
+            const subscriptionPlans = body.getAttribute('data-subscriptionplans');
+
+            if (subscriptionPlans.includes('planA')) {
+                const user = document.querySelector('.title');
+                user.style.backgroundColor = '#1B9C85';
+                user.innerText = 'User-Basic';
+            }
+
+            if (subscriptionPlans.includes('planB')) {
+                const user = document.querySelector('.title');
+                user.style.backgroundColor = '#512da8';
+                user.innerText = 'User-Premium';
+            }
+
+            if (subscriptionPlans.includes('planC')) {
+                const user = document.querySelector('.title');
+                user.style.backgroundColor = '#F7D060';
+                user.innerText = 'User-Ultra';
+            }
+
+            const editButton = document.querySelector('.edit-user');
+            const profileContainer = document.querySelector('.card-container');
+
+            editButton.addEventListener('click', async function(event) {
+                event.preventDefault();
+                const userId = this.getAttribute('data-user-id');
+                const selectedUser = users.find(user => user._id.toString() === userId);
+
+                if (selectedUser) {
+                    const userDetailsContainer = document.createElement('div');
+                    userDetailsContainer.classList.add('user-details');
+                    profileContainer.append(userDetailsContainer);
+
+                    userDetailsContainer.innerHTML = `
+                        <div class='edit'>
+                            <div class="heading">
+                                <h1 class="h2">Editing: ${selectedUser.username} Details</h1>
+                            </div>
+                            <div id="container-forms" class="container-forms p-relative center-flex" style="width: 540px; min-height: 530px; float: left;">
+                                <div class="form-container p-absolute h-full w-full">
+                                    <form class="center-flex h-full w-full" action="editUser" method="POST">
+                                        <label for="userName">User Name</label>
+                                        <input class="b-none fs-13 w-full rad-10" name="username" value="${selectedUser.username}" placeholder="User Name" required>
+                                        <label for="email">User Email</label>                                        
+                                        <input class="b-none fs-13 w-full rad-10" name="email" value="${selectedUser.email}" placeholder="User Email" required>
+                                        <label for="PaymentCardNumber">User Payment Card Number</label>                                        
+                                        <input class="b-none fs-13 w-full rad-10" name="PaymentCardNumber" value="${selectedUser.PaymentCardNumber}" placeholder="Payment Card Number" required>
+                                        <label for="PaymentCard3thNum">User Payment Card 3rd Number</label>                                        
+                                        <input class="b-none fs-13 w-full rad-10" name="PaymentCard3thNum" value="${selectedUser.PaymentCard3thNum}" placeholder="Payment Card 3rd Number" required>
+                                        <label for="PaymentCardExpDate">User Payment Card Exp Date</label>
+                                        <input class="b-none fs-13 w-full rad-10" name="PaymentCardExpDate" value="${selectedUser.PaymentCardExpDate}" placeholder="Payment Card Expire Date" required>
+                                        <button class="fs-13 mt-10 rad-10" type="submit">Update Details</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    alert('User details not found.');
+                }
+            });
+        });
+//- End Page
