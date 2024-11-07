@@ -182,7 +182,7 @@ exports.postReceiveYourCar = async (req, res, next) => {
 
             await garage.save();
 
-        res.redirect("https://www.google.com.eg");
+        res.redirect("http://192.168.0.10/awp//getthecar(1-1).html");
     } catch (error) {
         req.flash("authError", error.message);
         res.redirect("/Receive-Your-Car");

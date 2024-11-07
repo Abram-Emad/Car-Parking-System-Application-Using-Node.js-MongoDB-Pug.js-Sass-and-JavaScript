@@ -276,7 +276,7 @@ exports.postParkeyLogin = (req, res, next) => {
                 req.session.email = result.user.email;
                 req.session.profileImage = result.user.profileImage;
                 req.session.role = result.role;
-                res.status(303).redirect('https://www.youtube.com/');
+                res.status(303).redirect('http://192.168.0.10/awp//index.html');
             } else if (result.role === 'admin') {
                 req.session.adminId = String(result.user.id);
                 req.session.adminName = result.user.username;

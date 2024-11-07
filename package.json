@@ -22,7 +22,7 @@
     "serve-favicon": "^2.5.0",
     "socket.io": "^4.5.1"
   },
-  "name": "chat-application-project",
+  "name": "Car-Parking-System-Application",
   "version": "1.0.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
