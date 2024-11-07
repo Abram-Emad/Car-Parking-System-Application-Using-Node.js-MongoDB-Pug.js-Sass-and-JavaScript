@@ -22,11 +22,6 @@ const server = require("http").createServer(app);
 
 app.use(bodyParser.json());
 
-
-const io = socketIO(server);
-
-require("./sockets/init.socket")(io);
-
 app.use('/views', express.static(process.cwd() + '/views'));
 app.use('/images', express.static(process.cwd() + '/images'));
 app.use('/uploads', express.static(process.cwd() + '/uploads'));
